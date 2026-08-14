@@ -1,4 +1,4 @@
-﻿# NDV — Store Submission Guide (step by step)
+# NDV — Store Submission Guide (step by step)
 Everything you must do, in order. Each phase lists time + cost. Check items off as you go.
 Artifacts referenced live in this repo (paths relative to project root).
 
@@ -39,7 +39,7 @@ Account:
 Create the app:
 2. - [ ] All apps → Create app → Name: `NDV · Luxury for Her` → Default language: English →
        App/Game: App → Free/Paid: Free → accept declarations.
-3. - [ ] DECIDE appId NOW: current build = `com.ndv.vault`. If you want another, tell your agent
+3. - [ ] DECIDE appId NOW: current build = `au.com.ndvluxury`. If you want another, tell your agent
        BEFORE uploading (immutable after first upload).
 Upload build:
 4. - [ ] Left menu: Testing → Internal testing → Create new release →
@@ -80,7 +80,7 @@ Build the app (pick ONE):
   C. **Any Mac:** open `ios/App/App.xcworkspace` in Xcode → Signing: Automatic (pick your team) →
      Product → Archive → Distribute to App Store Connect.
 Listing (App Store Connect → Apps → + → New App):
-2. - [ ] Platform iOS, Name `NDV · Luxury for Her`, Bundle ID: select `com.ndv.vault`
+2. - [ ] Platform iOS, Name `NDV · Luxury for Her`, Bundle ID: select `au.com.ndvluxury`
        (register it when prompted — must match), SKU: ndv-ios-1.
 3. - [ ] Subtitle/Description/Keywords/Review notes: paste from `store/appstore-listing.md`.
 4. - [ ] Screenshots: 6.9" + 6.5" required. Recapture on the iOS simulator/device (sizes in the

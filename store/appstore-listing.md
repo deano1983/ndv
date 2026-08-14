@@ -1,6 +1,6 @@
 # Apple App Store — Listing (draft)
 
-- **Bundle ID:** com.ndv.vault (confirm before creating in App Store Connect — permanent)
+- **Bundle ID:** au.com.ndvluxury (confirm before creating in App Store Connect — permanent)
 - **Primary category:** Shopping · **Secondary:** Lifestyle · **Price:** Free
 - Physical goods via Shopify checkout → no In-App Purchase required (rule 3.1.5).
 
@@ -43,5 +43,5 @@ tap any product → Add to cart → checkout opens Shopify's secure web checkout
 ## Assets needed
 - [ ] Screenshots: 6.9" (1320×2868) + 6.5" (1242×2688) min — capture on iOS simulator/device
 - [ ] App icon 1024×1024 (no alpha) → `assets/icon-only.png` (already in repo)
-- [ ] Privacy policy URL REQUIRED: <add URL>
+- [ ] Privacy policy URL REQUIRED: https://ndv-luxury.netlify.app/privacy (live now; switch to https://ndvluxury.com.au/privacy once the custom domain is wired)
 - [ ] Privacy nutrition labels: purchases/contact info (via Shopify), no tracking

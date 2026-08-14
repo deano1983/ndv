@@ -1,6 +1,6 @@
 # Google Play — Store Listing (draft)
 
-- **Package:** com.ndv.vault (confirm before first upload — permanent)
+- **Package:** au.com.ndvluxury (confirm before first upload — permanent)
 - **Category:** Shopping · **Content rating:** Everyone · **Price:** Free
 - **Upload file:** `android\app\build\outputs\bundle\release\app-release.aab`
 
@@ -41,7 +41,7 @@ secure checkout, and your cart kept softly in sync.
 - Collects: purchase history, contact info (via Shopify checkout — shared with Shopify)
 - App activity: product views for cart/sync (stored on-device)
 - No ads, no ad tracking, no data sold
-- Privacy policy URL REQUIRED: <add URL before submission>
+- Privacy policy URL REQUIRED: https://ndv-luxury.netlify.app/privacy (live now; switch to https://ndvluxury.com.au/privacy once the custom domain is wired)
 
 ## Assets needed for submission
 - [ ] 2+ phone screenshots (capture from emulator/device: home, category, product)

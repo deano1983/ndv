@@ -4,7 +4,7 @@ import type { CapacitorConfig } from "@capacitor/cli";
 // The storefront runs client-side against the Shopify Storefront API,
 // so no hosted backend is required for catalog/cart/checkout.
 const config: CapacitorConfig = {
-  appId: "com.ndv.vault", // TODO: confirm final ID before store submission (immutable after first store upload)
+  appId: "au.com.ndvluxury", // TODO: confirm final ID before store submission (immutable after first store upload)
   appName: "NDV",
   webDir: "dist/client",
   server: {

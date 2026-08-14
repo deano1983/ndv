@@ -1,4 +1,4 @@
-package com.ndv.vault;
+package au.com.ndvluxury;
 
 import com.getcapacitor.BridgeActivity;
 
