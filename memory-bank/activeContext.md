@@ -1,6 +1,24 @@
 # Active Context — READ THIS FIRST when resuming
 
-_Last updated: 2026-08-14 ~22:20 (session: resume + native wrap) — ANDROID BUILD COMPLETE_
+_Last updated: 2026-08-14 ~17:40 — GITHUB LIVE + iOS CI iterating_
+
+## ✅ GitHub (done — Phase 2 of SUBMISSION-GUIDE)
+- Repo: **https://github.com/deano1983/ndv** (private). Auth via gh CLI (device flow), user `deano1983`
+  (NOTE: NOT deanos1983 — first URL user gave was wrong account). gh has `workflow` scope ✅.
+- Pushed: full project incl. memory-bank, store/, workflow. origin = correct URL.
+- GitHub Pages 422: free plan + private repo → no Pages. Privacy URL options: make repo public
+  (safe: Shopify token is public-by-design), or host `store/privacy.html` on Netlify/Vercel free,
+  or wait for the real web deploy and use https://domain/privacy.
+
+## iOS CI (.github/workflows/ios-build.yml) — runs:
+- #31811020357 FAIL: EBADPLATFORM — win32-only @img/sharp-win32-x64 + @capacitor/assets devDeps
+  broke `npm ci` on macOS → uninstalled both, pushed (icons are pre-generated; scripts use System.Drawing).
+- #31811154574 FAIL: `App.xcworkspace does not exist` — Capacitor 8 SPM layout has NO workspace
+  → fixed workflow to `-project App.xcodeproj` (also fixed in commented signed block).
+- #31824957864 **SUCCESS** ✅ (2m1s) — iOS app compiles+archives on macOS; artifact
+  `NDV-xcarchive-unsigned` (3.7 MB) stored on the run. CI path PROVEN end-to-end.
+- Remaining for App Store: Apple Developer account → either add the 4 signing secrets (see
+  workflow header) + uncomment signing block, or use Codemagic auto-signing → TestFlight.
 
 ## ✅ BUILT THIS SESSION
 - `android\app\build\outputs\apk\debug\app-debug.apk` (4.7 MB) — installable debug build

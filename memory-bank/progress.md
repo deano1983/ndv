@@ -28,7 +28,8 @@
 - [x] Real screenshots (home/category/product/privacy) in store/assets/
 - [x] Play feature graphic 1024×500 + hi-res icon 512 (store/assets/)
 - [x] Final AAB rebuilt with /privacy (BUILD SUCCESSFUL, 3.3 MB)
-- [ ] Push to GitHub (needs user's repo URL/auth) → unlocks iOS CI
+- [x] Push to GitHub — https://github.com/deano1983/ndv (private), gh CLI authed (workflow scope)
+- [x] iOS CI build GREEN — unsigned .xcarchive artifact produced on macOS runner
 - [ ] On-device test (needs a phone plugged in or an emulator)
 - [ ] Fill privacy placeholders (entity name, contact email, effective date) + deploy web app
       so the privacy URL is live for store forms
