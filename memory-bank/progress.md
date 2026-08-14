@@ -21,6 +21,11 @@
 - [x] Release AAB — `app-release.aab` (3.3 MB), signed + jarsigner-verified ✅
 - [x] Memory bank installed (this folder + .clinerules + copilot-instructions + AGENTS.md + global Cline rule)
 - [x] iOS CI workflow (.github/workflows/ios-build.yml) for no-Mac builds
+- [x] Git repo init'd + first commit (secrets gitignored & verified absent)
+- [x] Store listings drafted (store/play-listing.md, store/appstore-listing.md)
+- [x] APK manifest sanity-checked (aapt badging)
+- [ ] Push to GitHub (needs user's repo URL/auth) → unlocks iOS CI
+- [ ] On-device test (needs a phone plugged in or an emulator)
 - [ ] Test on emulator/real device (needs platform-tools adb + a device/emulator image)
 - [ ] iOS archive (REQUIRES macOS — CI or a Mac)
 - [ ] Store accounts: Google Play ($25), Apple Developer ($99)

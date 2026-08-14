@@ -10,6 +10,33 @@ _Last updated: 2026-08-14 ~22:20 (session: resume + native wrap) — ANDROID BUI
 - JDK **21** at `C:\Program Files\Microsoft\jdk-21.0.12.8-hotspot` (JAVA_HOME updated) —
   Capacitor 8 needs Java 21; JDK 17 fails with "invalid source release: 21"
 
+## Added after the builds (same session)
+- Git repo initialized at C:\dev\ndv (commit 1182880, 663 files). Git for Windows v2.55
+  installed to `C:\Program Files\Git`. NOT yet pushed — add GitHub remote to enable the
+  iOS CI workflow: `git remote add origin <url> && git push -u origin main`.
+- Secrets protected: .gitignore excludes `*.keystore`, `keystore.properties`, `.env`
+  (verified not tracked). memory-bank/ IS tracked on purpose.
+- Store listings drafted: `store/play-listing.md` + `store/appstore-listing.md`
+  (title/subtitle/full copy/keywords/review notes/asset checklists — privacy policy URL
+  still a placeholder).
+- APK manifest verified healthy: com.ndv.vault v1.0 (code 1), minSdk 24, targetSdk 36,
+  INTERNET, label "NDV", launcher activity OK.
+- adb present but no device/emulator was attached for an on-device test.
+
+## Store-asset pack added (same session, later)
+- `/privacy` route created (`src/routes/privacy.tsx`) — plain-language policy; placeholders to fill:
+  [EFFECTIVE DATE], [LEGAL ENTITY NAME], [privacy@your-domain.com]. Usable as the privacy URL
+  for BOTH stores once the web app is deployed.
+- `scripts/serve-dist.mjs` — dep-free static server for dist/client (SPA fallback). Port arg.
+- Real screenshots captured (Edge headless, 1080×1920) in `store/assets/`:
+  shot-1-home, shot-2-category, shot-3-product, shot-4-privacy.
+- `scripts/generate-store-graphics.ps1` → `store/assets/play-icon-512.png` + `play-feature-1024x500.png`.
+- ⚠️ CATALOG DATA ISSUE spotted via screenshots: some Shopify products from the AliExpress import
+  have watermarked/wrong supplier images (e.g. "NDV Seamless Crew Tee" shows a cosplay costume with
+  a "UU COSPLAY" watermark; another shows "DFLOWER" text). Clean product images in Shopify admin
+  before public launch — bad images will hurt store review + brand trust.
+- Final AAB rebuilt with /privacy included (check android\app\build\outputs\bundle\release\).
+
 ## NEXT (in priority order)
 1. Test the app: install `app-debug.apk` on a device/emulator (`adb install`) OR just upload
    the AAB to Play Console internal testing.
