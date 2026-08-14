@@ -123,3 +123,9 @@ The Capacitor 8 native wrapper is set up; we are mid-way through building the An
 - `npm run dev` = full-stack web (SSR). `npm run build:app` = static SPA for Capacitor.
 - Concierge chat + MCP + admin imports are server-only → hidden/absent in app builds by design.
 - Shopify calls are client-side → work inside the WebView. Supabase OAuth deep links NOT wired yet.
+
+## Web deploy - LIVE
+- **Public URL:** https://ndv-luxury.netlify.app (Netlify, deployed 2026-08-15). Privacy page at /privacy (SPA route).
+- **Site ID:** b9893937-8874-4cd6-aa54-fd3d6d89f146 | token in .netlify-token (local, gitignored).
+- **Custom domain pending:** ndvluxury.com.au / ndvluxury.au - wire in Netlify dashboard (Domain settings) when ready.
+- **Build used:** npm run build:app (app-shell; disables mcp plugin + Concierge). Plain npm run build FAILS on Windows (mcp routesDir path bug) - use build:app for web deploys too.
