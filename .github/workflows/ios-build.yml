@@ -35,11 +35,12 @@ jobs:
         with:
           xcode-version: latest-stable
 
-      # Capacitor 8 uses Swift Package Manager (Package.swift) — no pod install needed.
+      # Capacitor 8 uses Swift Package Manager (Package.swift) — no pods, and therefore
+      # NO App.xcworkspace: build the project directly with -project App.xcodeproj.
       - name: Build archive (unsigned verification)
         working-directory: ios/App
         run: |
-          xcodebuild -workspace App.xcworkspace \
+          xcodebuild -project App.xcodeproj \
             -scheme App \
             -configuration Release \
             -destination "generic/platform=iOS" \
@@ -65,7 +66,7 @@ jobs:
       # - name: Archive + export IPA
       #   working-directory: ios/App
       #   run: |
-      #     xcodebuild -workspace App.xcworkspace -scheme App -configuration Release \
+      #     xcodebuild -project App.xcodeproj -scheme App -configuration Release \
       #       -archivePath "$RUNNER_TEMP/NDV.xcarchive" archive
       #     xcodebuild -exportArchive -archivePath "$RUNNER_TEMP/NDV.xcarchive" \
       #       -exportOptionsPlist ExportOptions.plist -exportPath "$RUNNER_TEMP/ipa"
