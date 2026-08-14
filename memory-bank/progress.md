@@ -24,8 +24,15 @@
 - [x] Git repo init'd + first commit (secrets gitignored & verified absent)
 - [x] Store listings drafted (store/play-listing.md, store/appstore-listing.md)
 - [x] APK manifest sanity-checked (aapt badging)
+- [x] Privacy policy route (/privacy) + included in app build
+- [x] Real screenshots (home/category/product/privacy) in store/assets/
+- [x] Play feature graphic 1024×500 + hi-res icon 512 (store/assets/)
+- [x] Final AAB rebuilt with /privacy (BUILD SUCCESSFUL, 3.3 MB)
 - [ ] Push to GitHub (needs user's repo URL/auth) → unlocks iOS CI
 - [ ] On-device test (needs a phone plugged in or an emulator)
+- [ ] Fill privacy placeholders (entity name, contact email, effective date) + deploy web app
+      so the privacy URL is live for store forms
+- [ ] Clean AliExpress-import product images in Shopify (watermarks — see activeContext)
 - [ ] Test on emulator/real device (needs platform-tools adb + a device/emulator image)
 - [ ] iOS archive (REQUIRES macOS — CI or a Mac)
 - [ ] Store accounts: Google Play ($25), Apple Developer ($99)

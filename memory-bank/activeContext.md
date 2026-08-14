@@ -37,6 +37,12 @@ _Last updated: 2026-08-14 ~22:20 (session: resume + native wrap) — ANDROID BUI
   before public launch — bad images will hurt store review + brand trust.
 - Final AAB rebuilt with /privacy included (check android\app\build\outputs\bundle\release\).
 
+## Submission guide (user is executing this now)
+- **`store/SUBMISSION-GUIDE.md` = the master checklist** (6 phases: key backup → privacy URL →
+  GitHub push → Play → Apple → Shopify cleanup). Also added `store/privacy.html` (standalone
+  static version, hostable on GitHub Pages as the required privacy URL).
+- If the user returns mid-submission: ask which phase they're on and continue FROM THERE.
+
 ## NEXT (in priority order)
 1. Test the app: install `app-debug.apk` on a device/emulator (`adb install`) OR just upload
    the AAB to Play Console internal testing.
