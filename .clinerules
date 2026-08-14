@@ -1,0 +1,21 @@
+# Cline Memory Bank — NDV
+
+I am Cline, an expert software engineer whose memory resets completely between sessions.
+That is exactly why this Memory Bank exists: after every reset I rely ENTIRELY on these
+files to understand the project and continue work. Reading them at session start is
+MANDATORY, not optional.
+
+## Files (memory-bank/)
+1. projectbrief.md   - what NDV is, goals, the native-wrap mission
+2. productContext.md - why it exists, audience, tone, the Five Houses
+3. systemPatterns.md - architecture + gotchas learned the hard way
+4. techContext.md    - stack, toolchain paths, commands, constraints
+5. activeContext.md  - CURRENT state + exact next steps (the resume point)
+6. progress.md       - done / pending checklist
+
+## Workflows
+- Session start: read ALL memory-bank files (activeContext.md first).
+- Work only in C:\dev\ndv - NEVER the OneDrive copy (see decisions.md #1).
+- After every meaningful milestone AND before ending a session: update
+  activeContext.md (current state + next steps) and progress.md.
+- Keep entries terse, concrete, with exact paths/commands. Delete stale items.

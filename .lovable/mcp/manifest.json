@@ -1,0 +1,170 @@
+{
+  "version": 1,
+  "sdk_version": "0.23.0",
+  "path": "/mcp",
+  "auth": {
+    "type": "oauth",
+    "issuer": "https://vlpkuislhwpsehdbzuph.supabase.co/auth/v1",
+    "accepted_audiences": [
+      "authenticated"
+    ]
+  },
+  "mcp": {
+    "server": {
+      "name": "ndv-mcp",
+      "version": "0.1.0",
+      "title": "NDV · Neurodivergence"
+    },
+    "tools": [
+      {
+        "name": "list_categories",
+        "title": "List NDV houses",
+        "description": "List the five NDV houses (categories): Atelier, Intimates, Second Skin, Sanctuary Bedding, Objects & Adornment.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_products_by_category",
+        "title": "List NDV products in a house",
+        "description": "List products from one of the five NDV houses with pagination and sorting. Use `list_categories` first to see valid slugs. Pass the returned `next_cursor` back as `cursor` to fetch the next page.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "category": {
+              "type": "string",
+              "enum": [
+                "atelier",
+                "intimates",
+                "shapewear",
+                "bedding",
+                "adornment"
+              ],
+              "description": "Category slug: atelier | intimates | shapewear | bedding | adornment."
+            },
+            "limit": {
+              "default": 20,
+              "description": "Page size (1-50).",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50
+            },
+            "cursor": {
+              "description": "Opaque cursor from a previous call's `next_cursor` to fetch the next page.",
+              "type": "string"
+            },
+            "sort": {
+              "default": "best_selling",
+              "description": "Sort order for results.",
+              "type": "string",
+              "enum": [
+                "relevance",
+                "newest",
+                "oldest",
+                "price_asc",
+                "price_desc",
+                "title_asc",
+                "title_desc",
+                "best_selling"
+              ]
+            }
+          },
+          "required": [
+            "category"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "search_products",
+        "title": "Search NDV products",
+        "description": "Search the NDV luxury catalog by keyword with pagination and sorting. Returns title, price, category, image, and product URL. Pass the returned `next_cursor` back as `cursor` to fetch the next page.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Free-text search: fabric, garment type, mood, house name."
+            },
+            "limit": {
+              "default": 10,
+              "description": "Page size (1-25).",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 25
+            },
+            "cursor": {
+              "description": "Opaque cursor from a previous call's `next_cursor` to fetch the next page.",
+              "type": "string"
+            },
+            "sort": {
+              "default": "relevance",
+              "description": "Sort order for results.",
+              "type": "string",
+              "enum": [
+                "relevance",
+                "newest",
+                "oldest",
+                "price_asc",
+                "price_desc",
+                "title_asc",
+                "title_desc",
+                "best_selling"
+              ]
+            }
+          },
+          "required": [
+            "query"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_product",
+        "title": "Get NDV product details",
+        "description": "Fetch full details for a single NDV product by its handle (URL slug), including description, all variants, sizes, and shipping ETA.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "handle": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Product handle (URL slug), e.g. 'the-quiet-slip'."
+            }
+          },
+          "required": [
+            "handle"
+          ]
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}

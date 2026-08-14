@@ -1,0 +1,127 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+}
+
+:root {
+  --radius: 0.25rem;
+  /* NDV — Soft Rose Noir. Warm rose-noir base, dusty-rose accent, champagne-cream text. Feminine, sensory, airy. */
+  --background: oklch(0.18 0.012 20);          /* #1A1616 warm rose-black */
+  --foreground: oklch(0.89 0.025 60);          /* #E8D5C4 champagne cream */
+  --card: oklch(0.22 0.013 20);                /* #2A2424 */
+  --card-foreground: oklch(0.89 0.025 60);
+  --popover: oklch(0.22 0.013 20);
+  --popover-foreground: oklch(0.89 0.025 60);
+  --primary: oklch(0.74 0.055 20);             /* #CFA0A0 dusty rose */
+  --primary-foreground: oklch(0.18 0.012 20);
+  --secondary: oklch(0.24 0.013 20);
+  --secondary-foreground: oklch(0.89 0.025 60);
+  --muted: oklch(0.24 0.013 20);
+  --muted-foreground: oklch(0.74 0.030 35);    /* warm taupe-rose */
+  --accent: oklch(0.74 0.055 20);              /* dusty rose */
+  --accent-foreground: oklch(0.18 0.012 20);
+  --destructive: oklch(0.55 0.18 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.34 0.022 22);              /* softer blush-tinted hairline */
+  --input: oklch(0.28 0.016 20);
+  --ring: oklch(0.78 0.050 22);
+  --gold: oklch(0.78 0.052 22);                /* lifted rose-gold */
+  --gold-soft: oklch(0.86 0.040 25);           /* powder blush */
+  --rose-deep: oklch(0.62 0.075 18);           /* deeper rose for badges */
+  --font-display: "Cormorant Garamond", "Times New Roman", serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+  /* Airy tracking on small uppercase labels — the sensory-friendly micro-spacing */
+  .tracking-luxe { letter-spacing: 0.25em; }
+  .tracking-whisper { letter-spacing: 0.15em; }
+}
+
+@utility gold-grad {
+  background: linear-gradient(135deg, oklch(0.90 0.040 28), oklch(0.76 0.060 18) 55%, oklch(0.68 0.072 15));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility gold-border {
+  border: 1px solid color-mix(in oklab, var(--gold) 42%, transparent);
+}
+
+@utility hairline {
+  border-color: color-mix(in oklab, var(--gold-soft) 32%, transparent);
+}
+
+@utility surface-grain {
+  background-image:
+    radial-gradient(circle at 20% 0%, color-mix(in oklab, var(--gold) 14%, transparent), transparent 55%),
+    radial-gradient(circle at 80% 100%, color-mix(in oklab, var(--gold-soft) 10%, transparent), transparent 60%);
+}
+
+@utility rose-rule {
+  background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--gold-soft) 70%, transparent), transparent);
+}
+
+@utility rose-badge {
+  background: color-mix(in oklab, var(--gold-soft) 16%, transparent);
+  border: 1px solid color-mix(in oklab, var(--gold) 38%, transparent);
+  color: color-mix(in oklab, var(--gold-soft) 92%, white);
+}
+
+@utility rose-divider {
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    color-mix(in oklab, var(--gold) 45%, transparent) 30%,
+    color-mix(in oklab, var(--gold-soft) 55%, transparent) 50%,
+    color-mix(in oklab, var(--gold) 45%, transparent) 70%,
+    transparent);
+}
+

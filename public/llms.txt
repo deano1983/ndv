@@ -1,0 +1,26 @@
+# NDV · Neurodivergence
+
+> Luxury for the sensitive woman. Curated womenswear, lingerie, second-skin shapewear, weighted sanctuary bedding, and tactile objects engineered to soften external stimuli — designed for neurodivergent women aged 18–55 across the autism, ADHD, and sensory-processing spectrum.
+
+## Brand
+- Name: NDV (Neurodivergence)
+- Audience: women, 18–55, neurodivergent, luxury buyers
+- Aesthetic: Soft Rose Noir — hushed, sensory-friendly, no harsh contrast
+
+## The Five Houses
+- /category/atelier — silk, cashmere, fluid tailoring with lined seams
+- /category/intimates — wireless bralettes, sensory-soft lingerie, chemises
+- /category/shapewear — seamless second-skin shaping, no compression bite
+- /category/bedding — weighted blankets, mulberry-silk sleep, sanctuary linens
+- /category/adornment — tactile jewelry, worry stones, quiet electronics
+
+## Key pages
+- / — homepage, manifesto, full edit
+- /cart — review selection
+- /product/{handle} — product detail, sizing (US/UK/EU/AU/JP), add to cart
+
+## Concierge
+An on-site AI concierge assists with sizing, fabric questions, and sensory profile. Hushed tone, brief, never upsells.
+
+## Checkout
+Hosted Shopify checkout. Global shipping. Returns per policy.
