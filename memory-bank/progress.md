@@ -33,7 +33,12 @@
 - [ ] On-device test (needs a phone plugged in or an emulator)
 - [ ] Fill privacy placeholders (entity name, contact email, effective date) + deploy web app
       so the privacy URL is live for store forms
-- [ ] Clean AliExpress-import product images in Shopify (watermarks — see activeContext)
+- [x] Web app LIVE — https://ndv-luxury.netlify.app (2026-08-15); privacy URL live for store forms
+- [x] Yu+Mi sibling app (mindful-luxury-emporium repo) — full NDV-format wrap: signed AAB,
+      debug APK, iOS CI green, web live at yumi-adhd-sanctuary.netlify.app, store listings drafted
+- [x] Shopify image audit COMPLETE (2026-08-15) — 82 products/210 images reviewed;
+      7 products need replacement images, ~15 need overlay stripping (see activeContext)
+- [ ] Clean AliExpress-import product images in Shopify (watermarks — full cleanup list in activeContext)
 - [ ] Test on emulator/real device (needs platform-tools adb + a device/emulator image)
 - [ ] iOS archive (REQUIRES macOS — CI or a Mac)
 - [ ] Store accounts: Google Play ($25), Apple Developer ($99)
