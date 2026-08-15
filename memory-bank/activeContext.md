@@ -1,6 +1,28 @@
 # Active Context — READ THIS FIRST when resuming
 
-_Last updated: 2026-08-14 ~17:40 — GITHUB LIVE + iOS CI iterating_
+_Last updated: 2026-08-15 — SIBLING APP: Yu+Mi native wrap done; NDV image audit IN FLIGHT_
+
+## ⚡ NEW (2026-08-15): Sister project Yu+Mi · A.D.H.D
+- Repo C:\dev\mindful-luxury-emporium ← github.com/deano1983/mindful-luxury-emporium (PUBLIC).
+  Full NDV-format native wrap applied: Capacitor 8 shell, appId au.com.yumiadhd, signed AAB,
+  debug APK, iOS CI green, memory-bank installed there. See ITS memory-bank for details.
+- Both repos under deano1983 are now PUBLIC (ndv repo too — safe: Shopify token is public-by-design,
+  keystores gitignored in both).
+
+## ✅ NDV catalog image audit (COMPLETE 2026-08-15 — all 82 products / 210 images reviewed)
+- scripts/audit-shopify-images.mjs → .audit/img/ (gitignored). Cleanup list for Shopify admin:
+- 🚩 REPLACE (wrong product / competitor brand visible):
+  seamless-crew-tee (img4 = "SBLUU COSPLAY" cape), seamless-soft-cup-bra ("L'OGIELVE"
+  watermark ×4), cocoon-wrap-cardigan (shows an abaya — mismatch), cashmere-turtleneck
+  ("WDDFLOWER" ×2), open-bust-bodysuit ("VASLANDA" brand + size charts),
+  seamless-mid-thigh-short ("Aishang" ×2), bias-cut-midi-skirt (img1 Cyrillic text).
+- ⚠️ STRIP OVERLAYS (AliExpress-style infographics cheapen brand): compression-camisole,
+  seamless-mid-thigh-short, seamless-shaping-tank, seamless-slip-dress, modal-boyshort,
+  silk-flat-sheet (img3/4), silk-french-knicker (composite grids), and the whole shapewear
+  set (long-leg-shaping-short, shaping-*, sculpt-*, strapless-sculpt-bodysuit,
+  thigh-slimmer-short, high-waist-sculpt-brief, smoothing-brief).
+- ✅ Clean: all silk bedding/robes/PJs, lace + wireless bras, all jewelry, cashmere robe/
+  lounge/travel, bamboo line, weighted line, etc.
 
 ## ✅ GitHub (done — Phase 2 of SUBMISSION-GUIDE)
 - Repo: **https://github.com/deano1983/ndv** (private). Auth via gh CLI (device flow), user `deano1983`
@@ -53,6 +75,22 @@ _Last updated: 2026-08-14 ~17:40 — GITHUB LIVE + iOS CI iterating_
   have watermarked/wrong supplier images (e.g. "NDV Seamless Crew Tee" shows a cosplay costume with
   a "UU COSPLAY" watermark; another shows "DFLOWER" text). Clean product images in Shopify admin
   before public launch — bad images will hurt store review + brand trust.
+## IMAGE AUDIT IN FLIGHT (2026-08-15)
+- `scripts/audit-shopify-images.mjs` (NEW) pulled every product image via Storefront API to
+  `.audit/manifest.json` (210 imgs / 83 products) + downloaded to `.audit/img/<handle>__<n>.jpg`
+  (dir is gitignored). Manual visual pass running.
+- WATERMARKS / BAD confirmed so far:
+  - ndv-bias-cut-midi-skirt__1 — foreign-text (Cyrillic) overlay, off-brand editorial bg
+  - ndv-cashmere-turtleneck__1/__2 — "WDDFLOWER" watermark; __3/__4 Japanese-text flat-lay
+  - ndv-compression-camisole__1/__2/__3 — text/infographic callouts (supplier listing art)
+  - ndv-contour-slip (all 4), ndv-sculpt-thong-bodysuit (all 4) — generic AliExpress shapewear
+- CLEAN so far: back-smoothing-bodysuit, bamboo duvet/sheet/pillowcase-pair/sleep-bra/high-waist-brief,
+  bias-cut-midi-skirt__2, boucle-blazer, boucle-body-pillow, brushed-gold-watch, cashmere-bed-socks,
+  cashmere-hooded-robe, cashmere-lounge-pant, cashmere-travel-set, ceramic-incense-holder,
+  cocoon-wrap-cardigan, contour-midi-skirt.
+- TODO: finish remaining handles (contour-thong-bodysuit … worry-bead-necklace), then write cleanup
+  plan (replace-from-source vs crop vs re-shoot) into store/SUBMISSION-GUIDE phase 6.
+
 - Final AAB rebuilt with /privacy included (check android\app\build\outputs\bundle\release\).
 
 ## Submission guide (user is executing this now)

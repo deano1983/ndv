@@ -46,3 +46,5 @@ android/capacitor-cordova-android-plugins/build/
 ios/App/build/
 ios/DerivedData/
 # NOTE: memory-bank/ IS committed on purpose — it is the resumable session state.
+# local audit dumps (catalog image review)
+.audit/
