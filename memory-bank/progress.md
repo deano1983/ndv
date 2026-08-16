@@ -39,7 +39,8 @@
 - [x] Shopify image audit COMPLETE (2026-08-15) — 82 products/210 images reviewed;
       7 products need replacement images, ~15 need overlay stripping (see activeContext)
 - [ ] Clean AliExpress-import product images in Shopify (watermarks — full cleanup list in activeContext)
-- [ ] Test on emulator/real device (needs platform-tools adb + a device/emulator image)
+- [~] Test on emulator/real device — STARTED 2026-08-15 (home screenshot store/assets/emu-ndv-home.png);
+      AI session crashed mid-testing, findings lost. RETEST from scratch.
 - [ ] iOS archive (REQUIRES macOS — CI or a Mac)
 - [ ] Store accounts: Google Play ($25), Apple Developer ($99)
 - [ ] Finalize appId (com.ndv.vault placeholder), privacy policy URL, listing copy + screenshots

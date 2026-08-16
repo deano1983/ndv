@@ -1,6 +1,17 @@
 # Active Context — READ THIS FIRST when resuming
 
-_Last updated: 2026-08-15 — SIBLING APP: Yu+Mi native wrap done; NDV image audit IN FLIGHT_
+_Last updated: 2026-08-16 — CRASH RECOVERY: work verified safe; memory-bank backed up to Desktop_
+
+## 💾 2026-08-16: AI crash recovery + backup
+- AI session crashed on laptop 2026-08-15 (~midday); user feared a full day's work lost.
+- FORENSICS: almost nothing was actually lost. Both repos fully committed by ~10:07 AM 2026-08-15
+  (ndv @ e39874d, mindful-luxury-emporium @ 039e1de). Full-disk scans of both repos found NO other
+  post-commit work products.
+- Sole post-commit artifact: `store/assets/emu-ndv-home.png` (emulator home screenshot, 12:04 PM,
+  553 KB) → committed + pushed 2026-08-16. Its existence shows EMULATOR DEVICE-TESTING was in
+  flight when the crash hit — that test session's findings are the only true loss. Retest needed.
+- Full memory-bank backup at `C:\Users\DC\OneDrive\Desktop\memory-bank-backup-2026-08-16\`
+  (Desktop is OneDrive-synced → doubles as a cloud copy).
 
 ## ⚡ NEW (2026-08-15): Sister project Yu+Mi · A.D.H.D
 - Repo C:\dev\mindful-luxury-emporium ← github.com/deano1983/mindful-luxury-emporium (PUBLIC).
