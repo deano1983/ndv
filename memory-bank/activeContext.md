@@ -36,6 +36,9 @@ _Last updated: 2026-08-16 — CRASH RECOVERY: work verified safe; memory-bank ba
   (was `app_not_installed`). Docs confirm client-credentials grant REQUIRES the app version
   released with scopes AND installed on the store; success token = 32-hex (no prefix), 24h expiry.
   Fastest fix remains: admin → Develop apps → shpat_ token (no 24h expiry, no OAuth dance).
+- DECISION (2026-08-16): user chose to DELETE both watermark products outright instead of image
+  surgery: `ndv-cashmere-turtleneck` + `ndv-seamless-mid-thigh-short`. Ready to execute via
+  productDelete GraphQL mutation the moment Admin API access works — still credential-blocked.
 
 ## ⚡ NEW (2026-08-15): Sister project Yu+Mi · A.D.H.D
 - Repo C:\dev\mindful-luxury-emporium ← github.com/deano1983/mindful-luxury-emporium (PUBLIC).
