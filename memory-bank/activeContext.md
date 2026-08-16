@@ -39,6 +39,11 @@ _Last updated: 2026-08-16 — CRASH RECOVERY: work verified safe; memory-bank ba
 - DECISION (2026-08-16): user chose to DELETE both watermark products outright instead of image
   surgery: `ndv-cashmere-turtleneck` + `ndv-seamless-mid-thigh-short`. Ready to execute via
   productDelete GraphQL mutation the moment Admin API access works — still credential-blocked.
+- CREDENTIAL DIAGNOSIS (2026-08-16): file-1 pair (client_id 1895b43f… + shpss_4344…) is VALID —
+  fails only with `app_not_installed`. File-2 secret (shpss_9a3e…) = `invalid_request` → belongs to
+  a DIFFERENT/dead app; ignore it. ONE STEP LEFT: install the Dev Dashboard app on 6g358e-tz
+  (app page → Distribution / "Test on dev store"), with read_products+write_products scopes on the
+  released version. Then file-1 creds yield a 24h token and deletions can proceed.
 
 ## ⚡ NEW (2026-08-15): Sister project Yu+Mi · A.D.H.D
 - Repo C:\dev\mindful-luxury-emporium ← github.com/deano1983/mindful-luxury-emporium (PUBLIC).
