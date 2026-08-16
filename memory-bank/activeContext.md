@@ -44,6 +44,10 @@ _Last updated: 2026-08-16 — CRASH RECOVERY: work verified safe; memory-bank ba
   a DIFFERENT/dead app; ignore it. ONE STEP LEFT: install the Dev Dashboard app on 6g358e-tz
   (app page → Distribution / "Test on dev store"), with read_products+write_products scopes on the
   released version. Then file-1 creds yield a 24h token and deletions can proceed.
+- User said "go" (believed install done) — exchange STILL app_not_installed. Missing step is
+  Dev Dashboard → app → Distribution → Custom distribution → generate install link / select store
+  6g358e-tz → install. (Releasing a version/scopes ≠ installing.) Manual fallback offered: admin →
+  Products → tick both → bulk delete.
 
 ## ⚡ NEW (2026-08-15): Sister project Yu+Mi · A.D.H.D
 - Repo C:\dev\mindful-luxury-emporium ← github.com/deano1983/mindful-luxury-emporium (PUBLIC).
