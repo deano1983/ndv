@@ -27,6 +27,11 @@ _Last updated: 2026-08-16 — CRASH RECOVERY: work verified safe; memory-bank ba
 - Clean brand-generated replacements already in repo: `src/assets/products/atelier-turtleneck.png`,
   `sh-mid-thigh-short.png` (+ 55 others).
 - User replaced one image "in the Lovable file" — replacement NOT yet visible in local repo/GitHub.
+- Shopify Admin API creds provided via Desktop\shopifyAPI.txt (client_id + shpss_ client_secret —
+  DO NOT commit; repo is PUBLIC). Token exchange FAILED: "app_not_installed" (Dev Dashboard app
+  never installed on 6g358e-tz) and neither value works as an X-Shopify-Access-Token (401).
+  BLOCKED until user provides a working `shpat_...` Admin token (Settings → Apps → Develop apps →
+  create app with read/write_products → Install → reveal token) OR installs the dev-dashboard app.
 
 ## ⚡ NEW (2026-08-15): Sister project Yu+Mi · A.D.H.D
 - Repo C:\dev\mindful-luxury-emporium ← github.com/deano1983/mindful-luxury-emporium (PUBLIC).
