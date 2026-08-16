@@ -32,6 +32,10 @@ _Last updated: 2026-08-16 — CRASH RECOVERY: work verified safe; memory-bank ba
   never installed on 6g358e-tz) and neither value works as an X-Shopify-Access-Token (401).
   BLOCKED until user provides a working `shpat_...` Admin token (Settings → Apps → Develop apps →
   create app with read/write_products → Install → reveal token) OR installs the dev-dashboard app.
+- Round 2 (Desktop\shopifyAPI1.txt): new shpss_ secret → exchange now fails `invalid_request`
+  (was `app_not_installed`). Docs confirm client-credentials grant REQUIRES the app version
+  released with scopes AND installed on the store; success token = 32-hex (no prefix), 24h expiry.
+  Fastest fix remains: admin → Develop apps → shpat_ token (no 24h expiry, no OAuth dance).
 
 ## ⚡ NEW (2026-08-15): Sister project Yu+Mi · A.D.H.D
 - Repo C:\dev\mindful-luxury-emporium ← github.com/deano1983/mindful-luxury-emporium (PUBLIC).
