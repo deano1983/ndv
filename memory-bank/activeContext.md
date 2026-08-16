@@ -13,6 +13,21 @@ _Last updated: 2026-08-16 — CRASH RECOVERY: work verified safe; memory-bank ba
 - Full memory-bank backup at `C:\Users\DC\OneDrive\Desktop\memory-bank-backup-2026-08-16\`
   (Desktop is OneDrive-synced → doubles as a cloud copy).
 
+## 🖼️ 2026-08-16: Watermarked-image hunt (audit follow-up)
+- All flagged audit images map to `src/assets\imports\` — Shopify CDN filename == local filename.
+  Storefront pulls images from SHOPIFY at runtime → replacements MUST be applied in Shopify admin
+  (or re-import); editing local/Lovable files alone does NOT change the live site.
+- **DUPLICATE TRAP** (why user "couldn't find the second"): in both 2-watermark products, img2 is a
+  byte-identical dupe of img1 under a DIFFERENT hash name (MD5-verified):
+  - cashmere-turtleneck: `610667c4f15f.jpg` == `13f63524add5.jpg` (WDDFLOWER logo)
+  - seamless-mid-thigh-short: `cb54acc36ddd.jpg` == `252ece6b6516.jpg` (Aishang logo)
+- Also flagged: mid-thigh-short img3/4 = `6722da22de4f.jpg` / `6453039dbef1.jpg` ("BELLY IN WAIST" /
+  "COMPRESSION SHAPEWEAR" infographics); cashmere img3 = `7612e025c6e8.jpg` (Japanese text overlay).
+- bias-cut-midi-skirt images (`skirt-1.jpg`/`skirt-2.jpg`) exist ONLY on Shopify — not in local imports.
+- Clean brand-generated replacements already in repo: `src/assets/products/atelier-turtleneck.png`,
+  `sh-mid-thigh-short.png` (+ 55 others).
+- User replaced one image "in the Lovable file" — replacement NOT yet visible in local repo/GitHub.
+
 ## ⚡ NEW (2026-08-15): Sister project Yu+Mi · A.D.H.D
 - Repo C:\dev\mindful-luxury-emporium ← github.com/deano1983/mindful-luxury-emporium (PUBLIC).
   Full NDV-format native wrap applied: Capacitor 8 shell, appId au.com.yumiadhd, signed AAB,

@@ -38,7 +38,9 @@
       debug APK, iOS CI green, web live at yumi-adhd-sanctuary.netlify.app, store listings drafted
 - [x] Shopify image audit COMPLETE (2026-08-15) — 82 products/210 images reviewed;
       7 products need replacement images, ~15 need overlay stripping (see activeContext)
-- [ ] Clean AliExpress-import product images in Shopify (watermarks — full cleanup list in activeContext)
+- [~] Clean AliExpress-import product images — IN PROGRESS 2026-08-16: user started replacing;
+      full flagged→local-file mapping in activeContext (incl. duplicate-filename trap).
+      Fix must land in SHOPIFY ADMIN to affect the live site; local imports/ are just the source library.
 - [~] Test on emulator/real device — STARTED 2026-08-15 (home screenshot store/assets/emu-ndv-home.png);
       AI session crashed mid-testing, findings lost. RETEST from scratch.
 - [ ] iOS archive (REQUIRES macOS — CI or a Mac)
