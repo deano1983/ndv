@@ -1,9 +1,9 @@
-﻿import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
 // TODO before store submission: replace bracketed placeholders below
-// (legal entity name, contact email, effective date).
+// (placeholders filled 2026-08-22: Nouveau Dames Vault (NDV), privacy@ndvluxury.com.au, 22 August 2026).
 export const Route = createFileRoute("/privacy")({
   head: () => ({
     meta: [
@@ -34,9 +34,9 @@ function Privacy() {
           <p className="text-xs uppercase tracking-[0.4em] text-primary">NDV · Neurodivergence</p>
           <h1 className="font-display text-4xl md:text-5xl">Privacy, in plain language</h1>
           <p className="text-sm text-muted-foreground">
-            Effective date: <span className="text-foreground">[EFFECTIVE DATE]</span> ·
-            Controller: <span className="text-foreground">[LEGAL ENTITY NAME]</span> ·
-            Contact: <span className="text-foreground">[privacy@your-domain.com]</span>
+            Effective date: <span className="text-foreground">22 August 2026</span> ·
+            Controller: <span className="text-foreground">Nouveau Dames Vault (NDV)</span> ·
+            Contact: <span className="text-foreground">privacy@ndvluxury.com.au</span>
           </p>
           <p className="text-sm leading-relaxed text-muted-foreground">
             You are sensitive; your data is treated the same way. This policy explains what we
@@ -63,7 +63,7 @@ function Privacy() {
         </Section>
 
         <Section title="Your rights">
-          <p>Wherever you live, you may ask us to access, correct, export, or delete your personal data (GDPR, UK GDPR, CCPA/CPRA and similar frameworks are honored). Email <span className="text-foreground">[privacy@your-domain.com]</span> and we will respond within 30 days. Account deletion removes your authentication record; order records are retained only as long as tax and consumer law requires.</p>
+          <p>Wherever you live, you may ask us to access, correct, export, or delete your personal data (GDPR, UK GDPR, CCPA/CPRA and similar frameworks are honored). Email <span className="text-foreground">privacy@ndvluxury.com.au</span> and we will respond within 30 days. Account deletion removes your authentication record; order records are retained only as long as tax and consumer law requires.</p>
         </Section>
 
         <Section title="Security & retention">

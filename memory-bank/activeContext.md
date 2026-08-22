@@ -1,6 +1,65 @@
 # Active Context — READ THIS FIRST when resuming
 
-_Last updated: 2026-08-16 — CRASH RECOVERY: work verified safe; memory-bank backed up to Desktop_
+_Last updated: 2026-08-22 — "finish NDV today" session_
+
+## 🏁 2026-08-22: FINISH-IT SESSION (in flight)
+- **ndvluxury.au CERT IS LIVE** ✅ — strict-TLS fetch returns 200 (no cert error). BOTH custom
+  domains + netlify.app now fully live. Domain saga CLOSED.
+- **EMULATOR TEST COMPLETE** ✅ (the retest lost to the 08-15 crash): Pixel 7 API 36 AVD headless,
+  app-debug.apk installed via adb, launched, rendered (noir theme verified via screenshot
+  brightness ~44/255, not blank), scrolled, tapped through to product, back-nav, background+resume
+  all OK. NO crashes (logcat clean of FATAL). 5 evidence screenshots: `store/assets/emu-test-*.png`.
+  Noise found: Capacitor logs "Error injecting safe area CSS: TypeError ... null (reading 'style')"
+  — upstream Capacitor injected-script noise, NOT our code (no safe-area code in repo); harmless.
+- **appId CONFIRMED = `au.com.ndvluxury`** (aapt badging on APK; NOT com.ndv.vault as older notes
+  said). Launcher: au.com.ndvluxury/.MainActivity, label "NDV", v1.0 (code 1), minSdk 24, target 36.
+- **Privacy placeholders FILLED** ✅: 22 August 2026 / Nouveau Dames Vault (NDV) /
+  privacy@ndvluxury.com.au — in `src/routes/privacy.tsx` AND `store/privacy.html`.
+  (User: confirm entity name + create/forward that mailbox.)
+- **Rebuild DONE ✅** (`scripts/rebuild-release.ps1`): BUILD SUCCESSFUL — new
+  `android\app\build\outputs\bundle\release\app-release.aab` (3.46 MB, jarsigner-verified,
+  22/08 11:18) + `app-debug.apk` (4.86 MB, 11:17), both include the final privacy text
+  (verified: `privacy-Df3fCVcS.js` contains privacy@ndvluxury.com.au).
+- **Web REDEPLOYED ✅** (`scripts/deploy-netlify.ps1` — new one-command deploy script, fwd-slash
+  zip + curl.exe): deploy `6a88f9309d31fa82bf70b1ee` state=ready; live /privacy verified serving
+  new contact + effective date. ndvluxury.com.au + netlify.app both 200.
+- **Shopify product deletion STILL BLOCKED**: token exchange retried 2026-08-22 → still
+  `app_not_installed`. Needs ONE manual step: Shopify Dev Dashboard → app (client_id 1895b43f…)
+  → Distribution → install on 6g358e-tz. Then creds in Desktop\shopifyAPI.txt work for 24h tokens.
+  Alternative: admin → Products → bulk-delete the 2 handles manually.
+- New scripts: `scripts/emu-test-flow.ps1` (full emulator smoke test, brightness-verified
+  screenshots), `scripts/rebuild-release.ps1` (one-shot rebuild AAB+APK).
+- Emulator traps hit & solved: PowerShell `>` redirect corrupts binary PNGs (use `adb pull`);
+  `emulator.exe -list-avds` hangs; systemui ANR dialog on headless boot → tap "Wait" (script does
+  bounds-parse + tap).
+
+## 🌐 2026-08-16: Custom domains — ndvluxury.com.au ✅ / ndvluxury.au ⏳ cert pending
+- **ndvluxury.com.au + www: FULLY LIVE** (primary custom_domain; Netlify DNS zone via NS1;
+  apex+www A → 54.253.94.210; serves NDV storefront with valid SSL). Also added
+  www.ndvluxury.com.au as explicit alias (was resolving already via zone).
+- **ndvluxury.au + www: DNS FIXED BY USER** (Crazy Domains → apex A 75.2.60.5, www A 75.2.60.5;
+  verified resolving). Site routing WORKS (strict-TLS-off fetch returns NDV HTML), but Netlify
+  edge still serves default `*.netlify.app` cert for ndvluxury.au SNI → browsers show cert error.
+  Let's Encrypt provisioning PENDING (re-triggered 2026-08-16 by remove+re-add alias via API;
+  NETLIFY-SIDE WAIT — up to ~1h after DNS propagated). If still amber in dashboard after hours:
+  app.netlify.com/projects/ndv-luxury/configuration/domains → check ndvluxury.au status /
+  DNS check → retry cert. www used an A record (user chose) instead of CNAME — equivalent.
+
+
+## 🚨→✅ 2026-08-16: BLANK-PAGE FIX on ndv-luxury.netlify.app (deployed + verified)
+- Symptom: site loaded as blank white page. Root cause: the Netlify deploy's zip contained
+  **BACKSLASH entry paths** (`/assets\index-b-yq1nqw.js`) — browser asked for `assets/xxx.js`,
+  got the SPA fallback (`/* /index.html 200`) → HTML served as JS → module parse fail → blank.
+- Fix: rebuilt zip with FORWARD-SLASH entry names (manual ZipArchive entry creation —
+  `ZipFile.CreateFromDirectory` on Windows PowerShell 5.1 writes backslashes = TRAP;
+  PowerShell `Invoke-RestMethod -Body byte[]` also produced an EMPTY deploy — use curl.exe
+  `--data-binary @zip` for uploads), redeployed via Netlify API (site b9893937-…f146, token in
+  .netlify-token). Final good deploy: `6a8178f94c35c41b57a37948` (40 files, state=ready).
+- Verified live: JS bundle (543 KB application/javascript), CSS (84 KB text/css), and
+  custom domain **ndvluxury.com.au** (now wired in Netlify — SSL live) all resolve correctly.
+- Deploy method for future: zip `dist/client` (fwd-slash entries) → POST to
+  `/api/v1/sites/<site_id>/deploys` with `Content-Type: application/zip` via curl.exe.
+
 
 ## 💾 2026-08-16: AI crash recovery + backup
 - AI session crashed on laptop 2026-08-15 (~midday); user feared a full day's work lost.

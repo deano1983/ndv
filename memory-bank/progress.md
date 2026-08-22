@@ -30,21 +30,25 @@
 - [x] Final AAB rebuilt with /privacy (BUILD SUCCESSFUL, 3.3 MB)
 - [x] Push to GitHub — https://github.com/deano1983/ndv (private), gh CLI authed (workflow scope)
 - [x] iOS CI build GREEN — unsigned .xcarchive artifact produced on macOS runner
-- [ ] On-device test (needs a phone plugged in or an emulator)
-- [ ] Fill privacy placeholders (entity name, contact email, effective date) + deploy web app
-      so the privacy URL is live for store forms
+- [x] On-device test — DONE 2026-08-22 via headless emulator (Pixel 7 API 36): launch, render,
+      scroll, product tap, back-nav, background+resume all pass; no crashes; evidence
+      store/assets/emu-test-*.png + scripts/emu-test-flow.ps1
+- [x] Fill privacy placeholders — DONE 2026-08-22: entity "Nouveau Dames Vault (NDV)",
+      privacy@ndvluxury.com.au, effective 22 August 2026 (privacy.tsx + store/privacy.html);
+      AAB/APK rebuilt + web redeployed so live /privacy reflects it
 - [x] Web app LIVE — https://ndv-luxury.netlify.app (2026-08-15); privacy URL live for store forms
 - [x] Yu+Mi sibling app (mindful-luxury-emporium repo) — full NDV-format wrap: signed AAB,
       debug APK, iOS CI green, web live at yumi-adhd-sanctuary.netlify.app, store listings drafted
+- [x] Web BLANK-PAGE BUG FIXED (2026-08-16) — backslash zip paths broke assets; redeployed
+      via Netlify API with fwd-slash zip (deploy 6a8178f9…); ndv-luxury + ndvluxury.com.au live ✅
 - [x] Shopify image audit COMPLETE (2026-08-15) — 82 products/210 images reviewed;
       7 products need replacement images, ~15 need overlay stripping (see activeContext)
 - [~] Clean AliExpress-import product images — IN PROGRESS 2026-08-16: user started replacing;
       full flagged→local-file mapping in activeContext (incl. duplicate-filename trap).
       Fix must land in SHOPIFY ADMIN to affect the live site; local imports/ are just the source library.
-- [~] Test on emulator/real device — STARTED 2026-08-15 (home screenshot store/assets/emu-ndv-home.png);
-      AI session crashed mid-testing, findings lost. RETEST from scratch.
+- [~] Test on emulator/real device — ✅ COMPLETE 2026-08-22 (see top of file)
 - [ ] iOS archive (REQUIRES macOS — CI or a Mac)
-- [ ] Store accounts: Google Play ($25), Apple Developer ($99)
-- [ ] Finalize appId (com.ndv.vault placeholder), privacy policy URL, listing copy + screenshots
-- [ ] Replace placeholder icons/splash with final artwork
+- [ ] Finalize appId — ✅ RESOLVED: actual appId is `au.com.ndvluxury` (confirmed via aapt 2026-08-22; old "com.ndv.vault placeholder" notes were stale)
+- [ ] Store accounts: Google Play ($25), Apple Developer ($99) — USER ACTIONS, the only true blockers left
+- [ ] Replace placeholder icons/splash with final artwork (user art needed)
 - [ ] Optional v1.1: Supabase OAuth deep links, push notifications, Concierge via hosted API URL
