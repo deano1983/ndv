@@ -23,10 +23,12 @@ _Last updated: 2026-08-22 — "finish NDV today" session_
 - **Web REDEPLOYED ✅** (`scripts/deploy-netlify.ps1` — new one-command deploy script, fwd-slash
   zip + curl.exe): deploy `6a88f9309d31fa82bf70b1ee` state=ready; live /privacy verified serving
   new contact + effective date. ndvluxury.com.au + netlify.app both 200.
-- **Shopify product deletion STILL BLOCKED**: token exchange retried 2026-08-22 → still
-  `app_not_installed`. Needs ONE manual step: Shopify Dev Dashboard → app (client_id 1895b43f…)
-  → Distribution → install on 6g358e-tz. Then creds in Desktop\shopifyAPI.txt work for 24h tokens.
-  Alternative: admin → Products → bulk-delete the 2 handles manually.
+- **Shopify watermark products DELETED ✅ (2026-08-22)** — user deleted manually in admin
+  (`ndv-cashmere-turtleneck` + `ndv-seamless-mid-thigh-short`). Verified via Storefront API:
+  both handles return empty; catalog now 80 products (was 82 — exactly 2 gone, rest intact).
+  The `app_not_installed` credential saga is MOOT for this task. NOTE: remaining flagged
+  REPLACE/STRIP items from the 2026-08-15 audit (activeContext §audit) still stand for a
+  future cleanup pass — the 2 deleted were only the worst offenders.
 - New scripts: `scripts/emu-test-flow.ps1` (full emulator smoke test, brightness-verified
   screenshots), `scripts/rebuild-release.ps1` (one-shot rebuild AAB+APK).
 - Emulator traps hit & solved: PowerShell `>` redirect corrupts binary PNGs (use `adb pull`);

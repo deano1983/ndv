@@ -43,9 +43,9 @@
       via Netlify API with fwd-slash zip (deploy 6a8178f9…); ndv-luxury + ndvluxury.com.au live ✅
 - [x] Shopify image audit COMPLETE (2026-08-15) — 82 products/210 images reviewed;
       7 products need replacement images, ~15 need overlay stripping (see activeContext)
-- [~] Clean AliExpress-import product images — IN PROGRESS 2026-08-16: user started replacing;
-      full flagged→local-file mapping in activeContext (incl. duplicate-filename trap).
-      Fix must land in SHOPIFY ADMIN to affect the live site; local imports/ are just the source library.
+- [x] Clean AliExpress-import product images — WORST 2 DELETED 2026-08-22 (cashmere-turtleneck,
+      seamless-mid-thigh-short; verified gone, catalog 80 products). Remaining REPLACE/STRIP
+      items from audit are polish-only, not launch blockers.
 - [~] Test on emulator/real device — ✅ COMPLETE 2026-08-22 (see top of file)
 - [ ] iOS archive (REQUIRES macOS — CI or a Mac)
 - [ ] Finalize appId — ✅ RESOLVED: actual appId is `au.com.ndvluxury` (confirmed via aapt 2026-08-22; old "com.ndv.vault placeholder" notes were stale)
