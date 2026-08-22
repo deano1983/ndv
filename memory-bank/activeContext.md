@@ -1,6 +1,13 @@
 # Active Context — READ THIS FIRST when resuming
 
-_Last updated: 2026-08-22 — "finish NDV today" session_
+_Last updated: 2026-08-22 — session resumed; "finish NDV today" session verified complete & committed (HEAD 3a7b9d9), AAB/APK artifacts intact_
+
+## 🔄 2026-08-22 (later): RESUME CHECK — all prior work confirmed intact
+- Git HEAD = 3a7b9d9, working tree CLEAN. AAB (3.46 MB, 11:18) + debug APK (4.86 MB) still present
+  with final privacy text. Nothing to redo from the finish-it session.
+- REMAINING = user-side launch blockers: Google Play dev account ($25) → upload AAB (appId
+  `au.com.ndvluxury`), Apple Developer ($99) → iOS archive via CI/Mac, final icon art to replace
+  placeholders. Polish-only: remaining audit REPLACE/STRIP Shopify images.
 
 ## 🏁 2026-08-22: FINISH-IT SESSION (in flight)
 - **ndvluxury.au CERT IS LIVE** ✅ — strict-TLS fetch returns 200 (no cert error). BOTH custom
