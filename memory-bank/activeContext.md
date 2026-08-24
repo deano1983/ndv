@@ -49,6 +49,25 @@ _Last updated: 2026-08-24 — resume check #2: HEAD 56570a8, tree clean, AAB (3.
   `emulator.exe -list-avds` hangs; systemui ANR dialog on headless boot → tap "Wait" (script does
   bounds-parse + tap).
 
+## 📦 2026-08-24: DSers product-mapping CSV exported (NDV + Yu+Mi)
+- User asked for a DSers dropshipping mapping CSV: STORE PRODUCT ID / NAME / SUPPLIER
+  PRODUCT NAME / SUPPLIER PRODUCT URL.
+- **VERIFIED: no supplier (AliExpress) source URLs exist ANYWHERE for the 80 NDV products**
+  (or Yu+Mi's 93): 0 products have `custom.supplier_url` metafields via Storefront API;
+  no AliExpress links in descriptions; nothing in repo/git/.lovable/MCP/Supabase. The
+  original import ran in Lovable's cloud importer — source URLs were never captured.
+  Guessing URLs would poison DSers mappings → supplier columns shipped BLANK (honest).
+- `store/dsers-product-mapping.csv` — 80 rows, live numeric Shopify product IDs + titles
+  + handles (fresh Storefront API pull, sorted by handle). Same for Yu+Mi:
+  `C:\dev\mindful-luxury-emporium\store\dsers-product-mapping.csv` (93 rows).
+- NEW `scripts/export-dsers-mapping.mjs` (in BOTH repos; identical) — rerunnable:
+  `node scripts/export-dsers-mapping.mjs <shop> <token> <out.csv>`. It AUTO-FILLS
+  supplier URL/name from `custom.supplier_url`/`custom.supplier_name` metafields or any
+  aliexpress item URL in the product description (canonicalized), so once the user sets
+  metafields in Shopify admin (or pastes URLs), re-run regenerates a complete mapping.
+- How user fills supplier columns: DSers Chrome extension / AliExpress image search using
+  each product's first Shopify image, OR recover original URLs from Lovable import history.
+
 ## 🌐 2026-08-16: Custom domains — ndvluxury.com.au ✅ / ndvluxury.au ⏳ cert pending
 - **ndvluxury.com.au + www: FULLY LIVE** (primary custom_domain; Netlify DNS zone via NS1;
   apex+www A → 54.253.94.210; serves NDV storefront with valid SSL). Also added
