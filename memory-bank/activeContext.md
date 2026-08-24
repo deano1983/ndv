@@ -1,6 +1,13 @@
 # Active Context — READ THIS FIRST when resuming
 
-_Last updated: 2026-08-22 — session resumed; "finish NDV today" session verified complete & committed (HEAD 3a7b9d9), AAB/APK artifacts intact_
+_Last updated: 2026-08-24 — resume check #2: HEAD 56570a8, tree clean, AAB (3.46 MB) + APK (4.86 MB) intact; no changes needed; remaining = user-side launch blockers (unchanged)_
+
+## 🔄 2026-08-24: RESUME CHECK #2 — verified intact, no rework
+- Git HEAD = 56570a8 (memory commit on top of 3a7b9d9), working tree CLEAN.
+- app-release.aab (3,460,479 B, 22/08 11:18) + app-debug.apk (4,857,131 B, 22/08 11:17) present.
+- State unchanged from 2026-08-22: build/deploy/test work all DONE; remaining items are
+  user-side (Play account $25 → upload AAB appId `au.com.ndvluxury`; Apple $99 → iOS via CI/Mac;
+  final icon art) plus polish-only Shopify image REPLACE/STRIP cleanup.
 
 ## 🔄 2026-08-22 (later): RESUME CHECK — all prior work confirmed intact
 - Git HEAD = 3a7b9d9, working tree CLEAN. AAB (3.46 MB, 11:18) + debug APK (4.86 MB) still present
