@@ -2,6 +2,16 @@
 
 _Last updated: 2026-08-24 — resume check #2: HEAD 56570a8, tree clean, AAB (3.46 MB) + APK (4.86 MB) intact; no changes needed; remaining = user-side launch blockers (unchanged)_
 
+_Last updated: 2026-08-24 (later) — Lil NDV: kidiverse repo rebranded as NDV kids' line + full group-standard wrap done (see C:\dev\kidiverse\memory-bank)_
+
+## 👶 2026-08-24: Lil NDV — kidiverse repo rebranded + wrapped
+- C:\dev\kidiverse is now **Lil NDV** (kids' line of the NDV family; formerly Yu+Mi Kidiverse):
+  25 files rebranded, SKU prefix LN-, Capacitor 8 wrap (appId au.com.lilndv), signed AAB
+  (3.3 MB) + debug APK with children-focused /privacy (contact = privacy@ndvluxury.com.au —
+  same family mailbox; user confirm), store listings, DSers CSV (143 SKUs — this one has
+  FULL supplier URLs, unlike NDV/Yu+Mi), memory bank at C:\dev\kidiverse\memory-bank.
+- NOT yet pushed to GitHub/Lovable — Lovable cloud still brands it "Kidiverse" (coordinate).
+
 ## 🔄 2026-08-24: RESUME CHECK #2 — verified intact, no rework
 - Git HEAD = 56570a8 (memory commit on top of 3a7b9d9), working tree CLEAN.
 - app-release.aab (3,460,479 B, 22/08 11:18) + app-debug.apk (4,857,131 B, 22/08 11:17) present.
