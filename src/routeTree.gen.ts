@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CartRouteImport } from './routes/cart'
 import { Route as McpRouteImport } from './routes/mcp'
+import { Route as NdisRouteImport } from './routes/ndis'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ThankYouRouteImport } from './routes/thank-you'
@@ -44,6 +45,11 @@ const CartRoute = CartRouteImport.update({
 const McpRoute = McpRouteImport.update({
   id: '/mcp',
   path: '/mcp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NdisRoute = NdisRouteImport.update({
+  id: '/ndis',
+  path: '/ndis',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -115,6 +121,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/cart': typeof CartRoute
   '/mcp': typeof McpRoute
+  '/ndis': typeof NdisRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/thank-you': typeof ThankYouRoute
@@ -133,6 +140,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/cart': typeof CartRoute
   '/mcp': typeof McpRoute
+  '/ndis': typeof NdisRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/thank-you': typeof ThankYouRoute
@@ -152,6 +160,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/cart': typeof CartRoute
   '/mcp': typeof McpRoute
+  '/ndis': typeof NdisRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/thank-you': typeof ThankYouRoute
@@ -172,6 +181,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/cart'
     | '/mcp'
+    | '/ndis'
     | '/privacy'
     | '/sitemap.xml'
     | '/thank-you'
@@ -190,6 +200,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/cart'
     | '/mcp'
+    | '/ndis'
     | '/privacy'
     | '/sitemap.xml'
     | '/thank-you'
@@ -208,6 +219,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/cart'
     | '/mcp'
+    | '/ndis'
     | '/privacy'
     | '/sitemap.xml'
     | '/thank-you'
@@ -227,6 +239,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   CartRoute: typeof CartRoute
   McpRoute: typeof McpRoute
+  NdisRoute: typeof NdisRoute
   PrivacyRoute: typeof PrivacyRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ThankYouRoute: typeof ThankYouRoute
@@ -269,6 +282,13 @@ declare module '@tanstack/react-router' {
       path: '/mcp'
       fullPath: '/mcp'
       preLoaderRoute: typeof McpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ndis': {
+      id: '/ndis'
+      path: '/ndis'
+      fullPath: '/ndis'
+      preLoaderRoute: typeof NdisRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -363,6 +383,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   CartRoute: CartRoute,
   McpRoute: McpRoute,
+  NdisRoute: NdisRoute,
   PrivacyRoute: PrivacyRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   ThankYouRoute: ThankYouRoute,

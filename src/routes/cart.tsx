@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Minus, Plus, Trash2, ExternalLink, Loader2, ShoppingBag } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
 import { useEffect } from "react";
+import { NdisCheckout } from "@/components/NdisCheckout";
 
 export const Route = createFileRoute("/cart")({
   head: () => ({
@@ -78,6 +79,24 @@ function CartPage() {
               <span className="text-sm uppercase tracking-widest">Total</span>
               <span className="text-2xl font-display gold-grad">{currency} {totalPrice.toFixed(2)}</span>
             </div>
+            <NdisCheckout
+              lines={items.map(i => ({
+                description: i.selectedOptions.length > 0
+                  ? `${i.product.node.title} (${i.selectedOptions.map(o => o.value).join(", ")})`
+                  : i.product.node.title,
+                quantity: i.quantity,
+                unitPrice: parseFloat(i.price.amount),
+              }))}
+              currency={currency}
+              onCardDetailsSaved={async (d) => {
+                await useCartStore.getState().setNdisAttributes([
+                  { key: "NDIS invoice", value: "Yes — self-managed (card + tax invoice)" },
+                  { key: "NDIS participant", value: d.participantName },
+                  { key: "NDIS number", value: d.ndisNumber },
+                  { key: "NDIS contact email", value: d.email },
+                ]);
+              }}
+            />
             <Button onClick={handleCheckout} className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-sm" size="lg" disabled={isLoading || isSyncing}>
               {isLoading || isSyncing ? <Loader2 className="w-4 h-4 animate-spin" /> : <><ExternalLink className="w-4 h-4 mr-2" />Secure Checkout</>}
             </Button>

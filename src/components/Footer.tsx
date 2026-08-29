@@ -1,3 +1,5 @@
+import { Link } from "@tanstack/react-router";
+
 export function Footer() {
   return (
     <footer className="border-t hairline mt-32">
@@ -13,6 +15,9 @@ export function Footer() {
         <div>
           <p className="uppercase tracking-[0.2em] text-xs text-muted-foreground mb-3">Contact</p>
           <p className="text-muted-foreground">concierge@ndv.co</p>
+          <div className="mt-4 flex gap-4 text-xs">
+            <Link to="/ndis" className="text-muted-foreground hover:text-primary transition-colors">NDIS &amp; Invoice Payments</Link>
+          </div>
         </div>
       </div>
       <div className="border-t hairline py-5 text-center text-xs text-muted-foreground">© {new Date().getFullYear()} NDV · Neurodivergence · All rights reserved.</div>

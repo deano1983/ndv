@@ -1,5 +1,12 @@
 # Progress
 
+## NDIS payments & invoicing (Aug 29)
+- [x] NDIS checkout (card+tax-invoice AND pay-by-invoice) in CartDrawer + /cart — all 3 brands
+- [x] /ndis route + footer links; Shopify cart attributes (NDV + Yu+Mi); Stripe metadata (Lil NDV)
+- [x] Client-side tax-invoice generator (print/PDF/download/mailto) — works web + app WebView
+- [x] build:app + cap copy verified all three; AAB/APK rebuilds running 29/08
+- [ ] USER: web redeploy / AAB upload (NDIS registration optional) — ✅ ABN+bank filled 29/08; web deploys + AAB rebuilds done same day
+
 ## Web app (from Lovable session, Aug 7)
 - [x] All routes, components (Header/Footer/ProductCard/ProductGrid/CartDrawer/SizeGuide/Concierge)
 - [x] Shopify Storefront wired (live store), cart store, ~100 generated brand/product images

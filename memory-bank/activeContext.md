@@ -1,16 +1,45 @@
 # Active Context — READ THIS FIRST when resuming
 
+## 💳 2026-08-29: NDIS PAYMENTS & INVOICING — ADDED (all three brands)
+- Two-option NDIS checkout in the CartDrawer + /cart page (plus /ndis info route):
+  1. "Pay by card now" (self-managed): participant details → Shopify cart attributes
+     (cartAttributesUpdate → visible in order admin) + client-generated tax invoice
+     (print/PDF, download; /ndis keeps the saved invoice for re-print).
+  2. "Pay by NDIS invoice" (plan-managed): participant + plan-manager details →
+     generated tax invoice + mailto buttons (email plan manager / send merchant copy).
+- New files: src/lib/ndis.ts (NDIS_CONFIG + invoice/mailer builders),
+  components/NdisCheckout.tsx, components/NdisInvoicePreview.tsx, routes/ndis.tsx;
+  cartStore += setNdisAttributes; Footer /ndis link. Same pattern ported to
+  mindful-luxury-emporium (Yu+Mi ADHD — brand config only) and lil-ndv (Lil NDV —
+  Stripe session metadata via createHouseCheckoutSession ndis field; USD prices →
+  invoice carries "AUD amount confirmed before payment" note; contact
+  privacy@ndvluxury.com.au). Repo folder renamed 29/08: C:\dev\kidiverse → **C:\dev\lil-ndv**.
+- ALL THREE: build:app VERIFIED (Ndis chunks in client+server), cap copy done
+  (android+ios), AAB+APK rebuilds kicked off 29/08 via C:\dev\ndis-aab-builds.bat
+  (logs: C:\dev\ndv-aab.log / mle-aab.log / lil-ndv-aab.log).
+- ✅ 29/08 (later): NDIS_CONFIG FILLED in all three — ABN 61 794 639 443, ACN 72 448 917,
+  Commonwealth Bank · BSB 062-948 · Account 72448917 (same for all brands). Full
+  pipeline (build:app + cap copy + AAB/APK + Netlify deploy) run via
+  C:\dev\ndis-full-pipeline.bat; MLE got its own scripts/deploy-netlify.ps1; Lil NDV
+  got a NEW Netlify site https://lil-ndv.netlify.app (id 371c827d-432c-4cc4-8aa4-2974ac041ac5,
+  sso_login PATCHed false, own deploy script) — closes Lil NDV web-deploy NEXT item.
+- Optional: NDIS provider registration would unlock agency-managed participants.
+- Compliance: /ndis pages + invoices state we are NOT a registered NDIS provider
+  (self-/plan-managed participants only) + eligibility disclaimer.
+
 _Last updated: 2026-08-24 — resume check #2: HEAD 56570a8, tree clean, AAB (3.46 MB) + APK (4.86 MB) intact; no changes needed; remaining = user-side launch blockers (unchanged)_
 
-_Last updated: 2026-08-24 (later) — Lil NDV: kidiverse repo rebranded as NDV kids' line + full group-standard wrap done (see C:\dev\kidiverse\memory-bank)_
+_Last updated: 2026-08-24 (later) — Lil NDV: kidiverse repo rebranded as NDV kids' line + full group-standard wrap done (see C:\dev\lil-ndv\memory-bank — folder + GitHub repo renamed to lil-ndv on 29/08)_
 
 ## 👶 2026-08-24: Lil NDV — kidiverse repo rebranded + wrapped
-- C:\dev\kidiverse is now **Lil NDV** (kids' line of the NDV family; formerly Yu+Mi Kidiverse):
+- C:\dev\lil-ndv (renamed from C:\dev\kidiverse on 29/08) is **Lil NDV** (kids' line of the NDV family; formerly Yu+Mi Kidiverse):
   25 files rebranded, SKU prefix LN-, Capacitor 8 wrap (appId au.com.lilndv), signed AAB
   (3.3 MB) + debug APK with children-focused /privacy (contact = privacy@ndvluxury.com.au —
   same family mailbox; user confirm), store listings, DSers CSV (143 SKUs — this one has
-  FULL supplier URLs, unlike NDV/Yu+Mi), memory bank at C:\dev\kidiverse\memory-bank.
-- NOT yet pushed to GitHub/Lovable — Lovable cloud still brands it "Kidiverse" (coordinate).
+  FULL supplier URLs, unlike NDV/Yu+Mi), memory bank at C:\dev\lil-ndv\memory-bank.
+- 29/08: PUSHED to GitHub (now renamed https://github.com/deano1983/lil-ndv; Lovable's
+  diverged pre-rebrand remote preserved on lovable-cloud-backup — merge later). Lovable
+  cloud still brands it "Kidiverse" (coordinate there when syncing).
 
 ## 🔄 2026-08-24: RESUME CHECK #2 — verified intact, no rework
 - Git HEAD = 56570a8 (memory commit on top of 3a7b9d9), working tree CLEAN.
