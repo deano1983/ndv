@@ -21,6 +21,26 @@ try {
     $rel = $f.FullName.Substring($dist.Length + 1).Replace('\', '/')   # FORWARD slashes
     [void][System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile($archive, $f.FullName, $rel, 'Optimal')
   }
+  # STANDALONE CHECKOUT: bundle the Netlify function with esbuild (inlines the price
+  # JSON -> self-contained), then ship it + netlify.toml inside the deploy zip.
+  $bundleDir = Join-Path $env:TEMP "ndv-fn-bundle"
+  if (Test-Path $bundleDir) { Remove-Item $bundleDir -Recurse -Force }
+  New-Item -ItemType Directory -Force $bundleDir | Out-Null
+  $bundleOut = Join-Path $bundleDir "create-checkout-session.mjs"
+  & (Join-Path $root "node_modules\.bin\esbuild.cmd") `
+    (Join-Path $root "netlify\functions\create-checkout-session.mjs") `
+    --bundle --platform=node --format=esm `
+    "--external:node:*" `
+    --outfile=$bundleOut
+  if ($LASTEXITCODE -ne 0) { throw "esbuild function bundle failed" }
+  $rootFiles = @((Join-Path $root "netlify.toml"), $bundleOut)
+  foreach ($f in $rootFiles) {
+    if (-not (Test-Path $f)) { continue }
+    $rel = if ($f -eq $bundleOut) {
+      "netlify/functions/" + [IO.Path]::GetFileName($f)
+    } else { [IO.Path]::GetFileName($f) }
+    [void][System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile($archive, $f, $rel, 'Optimal')
+  }
 } finally {
   $archive.Dispose(); $fs.Dispose()
 }
@@ -34,4 +54,21 @@ Write-Output "zip: $count entries, $size MB (fwd-slash verified)"
 $resp = Get-Content "$env:TEMP\ndv-deploy.json" -Raw | ConvertFrom-Json
 Write-Output "deploy id: $($resp.id)  state: $($resp.state)"
 if (-not $resp.id) { throw "deploy failed: $resp" }
+
+# Zip deploys do NOT register functions from netlify.toml — upload the pre-bundled
+# function to the deploy via the Deploy Functions API (zip root = entry .mjs file).
+$fnZip = Join-Path $env:TEMP "ndv-fn-upload.zip"
+if (Test-Path $fnZip) { Remove-Item $fnZip -Force }
+Add-Type -AssemblyName System.IO.Compression, System.IO.Compression.FileSystem
+$fnFs = [IO.File]::Open($fnZip, 'Create')
+$fnArchive = New-Object IO.Compression.ZipArchive($fnFs, [IO.Compression.ZipArchiveMode]::Create)
+try {
+  [void][System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile(
+    $fnArchive, $bundleOut, "create-checkout-session.mjs", 'Optimal')
+} finally { $fnArchive.Dispose(); $fnFs.Dispose() }
+& curl.exe -s -X POST "https://api.netlify.com/api/v1/deploys/$($resp.id)/functions/create-checkout-session" `
+  -H "Authorization: Bearer $token" -H "Content-Type: application/zip" `
+  --data-binary "@$fnZip" -o "$env:TEMP\ndv-fn-deploy.json"
+$fnResp = Get-Content "$env:TEMP\ndv-fn-deploy.json" -Raw
+Write-Output "function deploy: $($fnResp.Substring(0, [Math]::Min(200, $fnResp.Length)))"
 Write-Output "watch: https://app.netlify.com/projects/ndv-luxury/deploys/$($resp.id)"

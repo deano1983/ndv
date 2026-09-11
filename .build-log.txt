@@ -1,0 +1,79 @@
+[36mvite v8.1.5 [32mbuilding client environment for production...[36m[39m
+[2Ktransforming...✓ 2195 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/client/assets/cat-shapewear-CkPMIyIw.jpg       18.39 kB
+dist/client/assets/cat-atelier-B84-VDcV.jpg         38.69 kB
+dist/client/assets/cat-bedding-DsLhfp5S.jpg         40.23 kB
+dist/client/assets/cat-intimates-BJ2iPJU7.jpg       44.10 kB
+dist/client/assets/hero-CbdBTcKw.jpg                57.59 kB
+dist/client/assets/cat-adornment-Df9fc0v8.jpg       91.17 kB
+dist/client/assets/styles-eXMR22pJ.css              84.79 kB │ gzip:  14.41 kB
+dist/client/assets/check-BOeIf7qc.js                 0.12 kB │ gzip:   0.14 kB
+dist/client/assets/category._slug-B-wLPkKg.js        0.27 kB │ gzip:   0.21 kB
+dist/client/assets/file-text-BIIDHfy-.js             0.38 kB │ gzip:   0.25 kB
+dist/client/assets/upload-gqBaseAV.js                0.42 kB │ gzip:   0.27 kB
+dist/client/assets/dist-htj7AGXi.js                  0.66 kB │ gzip:   0.46 kB
+dist/client/assets/jsx-runtime-DGeXAQPT.js           0.93 kB │ gzip:   0.55 kB
+dist/client/assets/tslib.es6-Tae09705.js             1.06 kB │ gzip:   0.52 kB
+dist/client/assets/thank-you-CXJ7LWld.js             1.08 kB │ gzip:   0.60 kB
+dist/client/assets/label-CZoXuD-j.js                 1.17 kB │ gzip:   0.64 kB
+dist/client/assets/createLucideIcon-BIFDFKxE.js      1.22 kB │ gzip:   0.71 kB
+dist/client/assets/category._slug-B4k8Lvbh.js        1.64 kB │ gzip:   0.77 kB
+dist/client/assets/category._slug-CFXZpP5F.js        1.69 kB │ gzip:   0.88 kB
+dist/client/assets/ProductCard-Dhmlt_Xx.js           1.88 kB │ gzip:   0.93 kB
+dist/client/assets/auth-CYh0G0O2.js                  2.45 kB │ gzip:   1.06 kB
+dist/client/assets/cartStore-mD7Q_iid.js             4.01 kB │ gzip:   1.88 kB
+dist/client/assets/product._handle-DR4B4xtN.js       4.03 kB │ gzip:   1.57 kB
+dist/client/assets/privacy-CbfasLKo.js               4.33 kB │ gzip:   1.70 kB
+dist/client/assets/ndis-DcU5uCoW.js                  4.53 kB │ gzip:   1.73 kB
+dist/client/assets/cart-BjEQEgZJ.js                  4.96 kB │ gzip:   1.70 kB
+dist/client/assets/routes-eSPpjmtL.js                5.29 kB │ gzip:   1.93 kB
+dist/client/assets/NdisCheckout-Dwuv-SLO.js          6.06 kB │ gzip:   2.37 kB
+dist/client/assets/preload-helper-poFlytoV.js        6.24 kB │ gzip:   2.35 kB
+dist/client/assets/Footer-Bw-2cXUL.js                8.24 kB │ gzip:   2.83 kB
+dist/client/assets/useQuery-CTe5YQDq.js              8.82 kB │ gzip:   3.22 kB
+dist/client/assets/admin.imports-DaQ2Hxt8.js        15.90 kB │ gzip:   4.72 kB
+dist/client/assets/admin.dsers-DoApsJf0.js          20.07 kB │ gzip:   6.52 kB
+dist/client/assets/NdisInvoicePreview-DKewW0pR.js   28.62 kB │ gzip:   7.92 kB
+dist/client/assets/button-QfkMW_9N.js               66.37 kB │ gzip:  22.40 kB
+dist/client/assets/shopify-ClPNTqQ3.js             169.51 kB │ gzip:  23.24 kB
+dist/client/assets/index-DvICJV-1.js               760.67 kB │ gzip: 211.09 kB
+
+[32m✓ built in 2.85s[39m
+[36mvite v8.1.5 [32mbuilding ssr environment for production...[36m[39m
+[2Ktransforming...✓ 106 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/server/assets/empty-plugin-adapters-D9UWiqvJ.js         0.22 kB │ gzip:  0.16 kB
+dist/server/assets/category._slug-DehYNSBz.js                0.43 kB │ gzip:  0.28 kB
+dist/server/assets/createMiddleware-B_4t7rW1.js              0.83 kB │ gzip:  0.32 kB
+dist/server/assets/auth-CdzJeko5.js                          1.04 kB │ gzip:  0.51 kB
+dist/server/assets/label-sQVcd-s9.js                         1.27 kB │ gzip:  0.60 kB
+dist/server/assets/client-DUHEcjQ1.js                        1.40 kB │ gzip:  0.69 kB
+dist/server/assets/category._slug-u0uqPeS8.js                1.47 kB │ gzip:  0.64 kB
+dist/server/assets/thank-you-UzGz4grt.js                     1.55 kB │ gzip:  0.72 kB
+dist/server/assets/button-B2LyfGb_.js                        1.78 kB │ gzip:  0.81 kB
+dist/server/assets/start-CAurRysj.js                         1.86 kB │ gzip:  0.82 kB
+dist/server/assets/cartStore-Br4WCKyW.js                     2.36 kB │ gzip:  1.02 kB
+dist/server/assets/category._slug-ej5Ed4Wt.js                2.46 kB │ gzip:  0.99 kB
+dist/server/assets/product._handle-DwK_F7OD.js               2.46 kB │ gzip:  1.05 kB
+dist/server/assets/ProductCard-Dw6_2C8z.js                   2.72 kB │ gzip:  1.12 kB
+dist/server/assets/_tanstack-start-manifest_v-CiK4HKgn.js    3.25 kB │ gzip:  0.92 kB
+dist/server/server.js                                        3.27 kB │ gzip:  1.41 kB
+dist/server/assets/auth-BRxWAfKP.js                          3.85 kB │ gzip:  1.34 kB
+dist/server/assets/ndis-DQ0l5ZAq.js                          5.37 kB │ gzip:  1.66 kB
+dist/server/assets/privacy-CBJoSKtS.js                       5.80 kB │ gzip:  1.90 kB
+dist/server/assets/product._handle-CxjcjtFu.js               6.11 kB │ gzip:  1.94 kB
+dist/server/assets/NdisCheckout-BkVhlsO-.js                  7.14 kB │ gzip:  2.36 kB
+dist/server/assets/cart-CH2Higbm.js                          8.00 kB │ gzip:  2.12 kB
+dist/server/assets/routes-CElNyFz9.js                        8.05 kB │ gzip:  2.38 kB
+dist/server/assets/NdisInvoicePreview-Cb9KJKk6.js           12.14 kB │ gzip:  3.84 kB
+dist/server/assets/Footer-DWUfQe4f.js                       12.65 kB │ gzip:  3.60 kB
+dist/server/assets/router-BS6WCuaZ.js                       18.62 kB │ gzip:  5.92 kB
+dist/server/assets/admin.imports-D1kvfuQ9.js                25.13 kB │ gzip:  5.81 kB
+dist/server/assets/admin.dsers-ByXwJMfg.js                  30.42 kB │ gzip:  7.58 kB
+dist/server/assets/server-Rd_LdT9l.js                       58.73 kB │ gzip: 15.11 kB
+dist/server/assets/shopify-zogg4Y45.js                     151.16 kB │ gzip: 11.92 kB
+
+[32m✓ built in 1.19s[39m

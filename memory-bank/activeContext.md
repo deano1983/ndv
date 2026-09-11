@@ -1,5 +1,22 @@
 # Active Context — READ THIS FIRST when resuming
 
+## 🚨 2026-08-29 (latest): DSERS CSVs + ACCOUNT SETUP — and a NEW BLOCKER
+- ⚠️ **NDV SHOPIFY PLAN LAPSED**: Storefront API = HTTP 402 "Unavailable Shop" → live
+  site shows NO products, checkout broken, until the Shopify plan is paid. USER ACTION
+  #1. (Yu+Mi store healthy.) Flagged in store/ACCOUNT-SETUP-GUIDE.md.
+- Brand-named DSers CSVs created + committed/pushed: NDV
+  store/ndv-dsers-product-mapping.csv (80 rows, suppliers blank — source URLs never
+  recorded at import; API 402 blocks fresh pull, used last-known list), Yu+Mi
+  yumi-adhd-dsers-product-mapping.csv (93 rows fresh pull, blank), Lil NDV
+  lil-ndv-dsers-product-mapping.csv (143/143 COMPLETE with names+URLs).
+- Supplier auto-fill for NDV/Yu+Mi BLOCKED here: all search engines captcha-walled via
+  fetch tool; Firecrawl path needs LOVABLE_API_KEY + FIRECRAWL_API_KEY (user, from
+  Lovable settings) → then run existing tuned resolver
+  (src/lib/aliexpress-resolver.functions.ts) locally. Manual alt: DSers image search.
+- Shipping rates proposed (guide): AUD 12.90 standard 10–20d / AUD 24.90 express 5–8d.
+  Can be set programmatically IF user supplies a Shopify Admin API token (shpat_...).
+- store/ACCOUNT-SETUP-GUIDE.md = full checklist (copied to all three repos).
+
 ## 💳 2026-08-29: NDIS PAYMENTS & INVOICING — ADDED (all three brands)
 - Two-option NDIS checkout in the CartDrawer + /cart page (plus /ndis info route):
   1. "Pay by card now" (self-managed): participant details → Shopify cart attributes

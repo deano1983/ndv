@@ -1,0 +1,18 @@
+﻿# NDV standalone - zip-deploy config.
+# (Zip deploys: the zip root is the publish dir; keep [build] OUT of this file.)
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Function-style v2 API path is /api/create-checkout-session (declared in-function);
+# this redirect covers any /api/* fallback and keeps URLs stable.
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Cache-Control = "no-store"

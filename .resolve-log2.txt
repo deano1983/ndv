@@ -1,0 +1,11 @@
+Restricting to 80 handles from store/ndv-dsers-product-mapping.csv
+  REPLACED                 ndv-bias-cut-midi-skirt -> https://www.aliexpress.com/item/1005011923017054.html [HIGH 1.01]
+  REPLACED                 ndv-boucle-blazer -> https://www.aliexpress.com/item/1005005008178040.html [HIGH 0.6212]
+  REPLACED                 ndv-cashmere-lounge-pant -> https://www.aliexpress.com/item/1005009774414282.html [HIGH 0.7167]
+  NEW                      ndv-cashmere-hooded-robe -> https://www.aliexpress.com/item/1005010161399877.html [HIGH 1]
+  REPLACED                 ndv-cashmere-travel-set -> https://www.aliexpress.com/item/1005010288053191.html [HIGH 0.7759]
+  REPLACED                 ndv-cocoon-wrap-cardigan -> https://www.aliexpress.com/item/1005005188034021.html [HIGH 0.7559]
+  REPLACED                 ndv-draped-silk-blouse -> https://www.aliexpress.com/item/1005001870995914.html [HIGH 1.0847]
+  RETAINED-SEARCH-FAILED   ndv-fluid-wide-leg-trouser -> (none) [NONE 0]
+  RETAINED-SEARCH-FAILED   ndv-long-silk-robe -> (none) [NONE 0]
+  RETAINED-SEARCH-FAILED   ndv-ribbed-knit-midi -> (none) [NONE 0]

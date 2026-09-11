@@ -1,17 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
-import { CATEGORIES, SHOPIFY_STOREFRONT_URL, SHOPIFY_STOREFRONT_TOKEN } from "@/lib/shopify";
+import { CATEGORIES } from "@/lib/shopify";
+import rawCatalog from "@/data/catalog.json";
 
-const BASE_URL = "https://ndv-luxe-haven.lovable.app";
-
-const SITEMAP_PRODUCTS_QUERY = `
-  query SitemapProducts($first: Int!, $after: String) {
-    products(first: $first, after: $after) {
-      pageInfo { hasNextPage endCursor }
-      edges { node { handle updatedAt } }
-    }
-  }
-`;
+const BASE_URL = process.env.PUBLIC_BASE_URL ?? "https://ndvluxury.com.au";
 
 interface SitemapEntry {
   path: string;
@@ -20,28 +12,10 @@ interface SitemapEntry {
   priority?: string;
 }
 
-async function fetchAllProducts(): Promise<Array<{ handle: string; updatedAt: string }>> {
-  const out: Array<{ handle: string; updatedAt: string }> = [];
-  let after: string | null = null;
-  for (let i = 0; i < 10; i++) {
-    const r: Response = await fetch(SHOPIFY_STOREFRONT_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Shopify-Storefront-Access-Token": SHOPIFY_STOREFRONT_TOKEN,
-      },
-      body: JSON.stringify({ query: SITEMAP_PRODUCTS_QUERY, variables: { first: 250, after } }),
-    });
-    const json: any = await r.json();
-    const conn: any = json?.data?.products;
-    if (!conn) break;
-    for (const e of (conn.edges ?? []) as Array<{ node: { handle: string; updatedAt: string } }>) {
-      if (e?.node?.handle) out.push({ handle: e.node.handle, updatedAt: e.node.updatedAt });
-    }
-    if (!conn.pageInfo?.hasNextPage) break;
-    after = conn.pageInfo.endCursor as string;
-  }
-  return out;
+// STANDALONE: product URLs come from the bundled local catalog (no Shopify API).
+async function fetchAllProducts(): Promise<Array<{ handle: string; updatedAt?: string }>> {
+  const catalog = rawCatalog as Array<{ node: { handle: string } }>;
+  return catalog.map((e) => ({ handle: e.node.handle }));
 }
 
 export const Route = createFileRoute("/sitemap.xml")({

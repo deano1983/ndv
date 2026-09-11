@@ -32,7 +32,7 @@ export const Route = createFileRoute("/product/$handle")({
     const p = loaderData?.product;
     const title = p ? `${p.title} — NDV · Neurodivergence` : `NDV · Neurodivergence`;
     const desc = p?.description || "Luxury for the sensitive woman — sensory-friendly piece from NDV.";
-    const url = `https://ndv-luxe-haven.lovable.app/product/${params.handle}`;
+    const url = `${import.meta.env.VITE_SITE_URL ?? "https://ndvluxury.com.au"}/product/${params.handle}`;
     const meta: Array<Record<string, string>> = [
       { title },
       { name: "description", content: desc },

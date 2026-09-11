@@ -13,7 +13,7 @@ export const Route = createFileRoute("/category/$slug")({
   },
   head: ({ loaderData }) => {
     if (!loaderData) return { meta: [] };
-    const url = `https://ndv-luxe-haven.lovable.app/category/${loaderData.cat.slug}`;
+    const url = `${import.meta.env.VITE_SITE_URL ?? "https://ndvluxury.com.au"}/category/${loaderData.cat.slug}`;
     const title = `${loaderData.cat.title} — NDV · Neurodivergence`;
     return {
       meta: [

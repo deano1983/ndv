@@ -2,11 +2,20 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+
 import { Button } from "@/components/ui/button";
 import { CATEGORIES } from "@/lib/shopify";
 import { toast } from "sonner";
 import { Copy, Download, FileDown, Plus, Trash2, Upload, AlertCircle, Wand2, Loader2, ExternalLink } from "lucide-react";
-import { resolveAliExpressUrls } from "@/lib/aliexpress-resolver.functions";
+// STANDALONE: Lovable/Firecrawl gateway resolver removed. URL resolution now
+// runs locally via scripts/resolve-suppliers-direct.mjs (keyless). In-app, the
+// wizard validates and normalizes pasted AliExpress URLs instead.
+function normalizeAliExpressUrl(input: string): { url: string | null; productId: string | null } {
+  const idMatch = input.match(/(?:aliexpress\.com\/item\/|item\/)(\d{6,})\.html?/) ?? input.match(/^(\d{10,})$/);
+  if (!idMatch) return { url: null, productId: null };
+  const id = idMatch[1];
+  return { url: `https://www.aliexpress.com/item/${id}.html`, productId: id };
+}
 
 export const Route = createFileRoute("/admin/dsers")({
   head: () => ({
@@ -268,29 +277,22 @@ function DsersWizard() {
     let ok = 0, fail = 0;
     const newFailed: string[] = [];
     try {
-      const CHUNK = 5;
-      for (let i = 0; i < targets.length; i += CHUNK) {
-        const chunk = targets.slice(i, i + CHUNK);
-        const { results } = await resolveAliExpressUrls({ data: { terms: chunk.map(r => r.input.trim()) } });
-        const byTerm = new Map(results.map(r => [r.term, r]));
-        for (const t of chunk) {
-          const hit = byTerm.get(t.input.trim());
-          if (hit?.url) {
-            ok++;
-            const url = hit.url; const title = hit.title;
-            setRows(rs => rs.map(r => r.id === t.id ? { ...r, input: url, title: r.title || (title ?? "").slice(0, 80) } : r));
-          } else {
-            fail++;
-            newFailed.push(t.id);
-          }
+      for (const t of targets) {
+        const { url } = normalizeAliExpressUrl(t.input.trim());
+        if (url) {
+          ok++;
+          setRows(rs => rs.map(r => r.id === t.id ? { ...r, input: url } : r));
+        } else {
+          fail++;
+          newFailed.push(t.id);
         }
-        setProgress(p => p ? { ...p, done: Math.min(i + chunk.length, total), ok, fail, elapsedMs: Date.now() - started } : p);
+        setProgress(p => p ? { ...p, done: p.done + 1, ok, fail, elapsedMs: Date.now() - started } : p);
       }
       setFailedIds(newFailed);
-      if (ok) toast.success(`Resolved ${ok} URL${ok === 1 ? "" : "s"}${fail ? ` · ${fail} unresolved` : ""} in ${((Date.now() - started) / 1000).toFixed(1)}s`);
-      else toast.error(`No URLs resolved (${fail} failed)`);
+      if (ok) toast.success(`Validated ${ok} URL${ok === 1 ? "" : "s"}${fail ? ` · ${fail} not AliExpress item links` : ""} in ${((Date.now() - started) / 1000).toFixed(1)}s`);
+      else toast.error(`No valid AliExpress URLs (${fail} failed)`);
     } catch (e) {
-      toast.error(e instanceof Error ? e.message : "Resolver failed");
+      toast.error(e instanceof Error ? e.message : "Validation failed");
     } finally {
       clearInterval(timer);
       setProgress(p => p ? { ...p, elapsedMs: Date.now() - started } : p);

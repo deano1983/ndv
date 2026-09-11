@@ -16,16 +16,15 @@ export const Route = createFileRoute("/cart")({
 });
 
 function CartPage() {
-  const { items, isLoading, isSyncing, updateQuantity, removeItem, getCheckoutUrl, syncCart } = useCartStore();
+  const { items, isLoading, isSyncing, updateQuantity, removeItem, startCheckout, syncCart } = useCartStore();
   useEffect(() => { syncCart(); }, [syncCart]);
 
   const totalItems = items.reduce((s, i) => s + i.quantity, 0);
   const totalPrice = items.reduce((s, i) => s + parseFloat(i.price.amount) * i.quantity, 0);
   const currency = items[0]?.price.currencyCode || "AUD";
 
-  const handleCheckout = () => {
-    const url = getCheckoutUrl();
-    if (url) window.open(url, "_blank");
+  const handleCheckout = async () => {
+    await startCheckout();
   };
 
   return (
@@ -100,7 +99,7 @@ function CartPage() {
             <Button onClick={handleCheckout} className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-sm" size="lg" disabled={isLoading || isSyncing}>
               {isLoading || isSyncing ? <Loader2 className="w-4 h-4 animate-spin" /> : <><ExternalLink className="w-4 h-4 mr-2" />Secure Checkout</>}
             </Button>
-            <p className="text-[10px] text-muted-foreground text-center uppercase tracking-widest">Encrypted · Shopify Secured</p>
+            <p className="text-[10px] text-muted-foreground text-center uppercase tracking-widest">Encrypted · Stripe Secured</p>
           </aside>
         </div>
       )}

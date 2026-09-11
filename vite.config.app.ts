@@ -1,16 +1,33 @@
-// Native-app-shell build config (Capacitor). Builds the app as a static SPA:
+﻿// Native-app-shell build config (Capacitor). Builds the app as a static SPA:
 // no Nitro server, no server routes. The storefront runs fully client-side
-// against the Shopify Storefront API. Server-only features (Concierge /api/chat,
+// against the local catalog. Server-only features (Concierge /api/chat,
 // MCP endpoints, admin import tools) are disabled in this build via
 // VITE_APP_SHELL=true (see .env.appshell and src/routes/__root.tsx).
-import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+//
+// STANDALONE: vanilla Vite config (Lovable wrapper removed).
+import { defineConfig } from "vite";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import viteReact from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
+import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
-  nitro: false,
-  tanstackStart: {
-    spa: {
-      enabled: true,
-      prerender: { enabled: true, crawlLinks: false },
-    },
-  },
+  plugins: [
+    tsconfigPaths({ projects: ["./tsconfig.json"] }),
+    tailwindcss(),
+    tanstackStart({
+      importProtection: {
+        behavior: "error",
+        client: {
+          files: ["**/server/**"],
+          specifiers: ["server-only"],
+        },
+      },
+      spa: {
+        enabled: true,
+        prerender: { enabled: true, crawlLinks: false },
+      },
+    }),
+    viteReact(),
+  ],
 });

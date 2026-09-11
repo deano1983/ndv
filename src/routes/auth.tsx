@@ -1,7 +1,6 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { lovable } from "@/integrations/lovable/index";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -66,18 +65,7 @@ function AuthPage() {
     const { error } = await supabase.auth.signInWithPassword({ email, password });
     setBusy(false);
     if (error) return setError(error.message);
-    if (next.startsWith("/.lovable/")) window.location.href = next;
-    else void navigate({ to: next });
-  }
-
-  async function onGoogle() {
-    setError(null);
-    const result = await lovable.auth.signInWithOAuth("google", {
-      redirect_uri: window.location.origin + next,
-    });
-    if (result.error) return setError(String(result.error));
-    if (result.redirected) return;
-    window.location.href = next;
+    void navigate({ to: next });
   }
 
   return (
@@ -123,10 +111,6 @@ function AuthPage() {
           {mode === "signin" ? "Sign in" : "Create account"}
         </Button>
       </form>
-
-      <Button type="button" variant="outline" onClick={onGoogle} className="w-full">
-        Continue with Google
-      </Button>
 
       <button
         type="button"

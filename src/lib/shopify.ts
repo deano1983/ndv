@@ -1,9 +1,15 @@
-import { toast } from "sonner";
+﻿import rawCatalog from "@/data/catalog.json";
 
-export const SHOPIFY_API_VERSION = "2025-07";
-export const SHOPIFY_STORE_PERMANENT_DOMAIN = "6g358e-tz.myshopify.com";
-export const SHOPIFY_STOREFRONT_URL = `https://${SHOPIFY_STORE_PERMANENT_DOMAIN}/api/${SHOPIFY_API_VERSION}/graphql.json`;
-export const SHOPIFY_STOREFRONT_TOKEN = "745fa452d4d5229f5e56530910b1f60d";
+/**
+ * STANDALONE CATALOG â€” no Shopify, no Lovable.
+ * The storefront no longer calls the Shopify Storefront API (which began
+ * returning HTTP 402). All product data now ships with the app from
+ * src/data/catalog.json (built by scripts/build-catalog.mjs from the
+ * .audit/products.json snapshot + store/ndv-dsers-mapping-full-v5.csv).
+ *
+ * storefrontApiRequest() is kept as a compatibility shim with the same
+ * response shapes the routes already parse, so no route logic changes.
+ */
 
 export interface ShopifyMetafield {
   key: string;
@@ -37,75 +43,33 @@ export interface ShopifyProduct {
     options: Array<{ name: string; values: string[] }>;
     shippingEta?: ShopifyMetafield | null;
     supplierUrl?: ShopifyMetafield | null;
+    house?: string;
   };
 }
 
-const METAFIELD_IDENTIFIERS = `
-  shippingEta: metafield(namespace: "custom", key: "shipping_eta") { key namespace value type }
-  supplierUrl: metafield(namespace: "custom", key: "supplier_url") { key namespace value type }
-`;
+const CATALOG = rawCatalog as unknown as ShopifyProduct[];
 
-export const PRODUCTS_QUERY = `
-  query GetProducts($first: Int!, $query: String) {
-    products(first: $first, query: $query) {
-      edges {
-        node {
-          id title description handle productType tags vendor
-          priceRange { minVariantPrice { amount currencyCode } }
-          images(first: 5) { edges { node { url altText } } }
-          variants(first: 10) {
-            edges { node { id title price { amount currencyCode } availableForSale selectedOptions { name value } } }
-          }
-          options { name values }
-          ${METAFIELD_IDENTIFIERS}
-        }
-      }
-    }
-  }
-`;
-
-export const PRODUCT_BY_HANDLE_QUERY = `
-  query GetProduct($handle: String!) {
-    product(handle: $handle) {
-      id title description handle productType tags vendor
-      priceRange { minVariantPrice { amount currencyCode } }
-      images(first: 8) { edges { node { url altText } } }
-      variants(first: 25) {
-        edges { node { id title price { amount currencyCode } availableForSale selectedOptions { name value } } }
-      }
-      options { name values }
-      ${METAFIELD_IDENTIFIERS}
-    }
-  }
-`;
+export const PRODUCTS_QUERY = "local:products";
+export const PRODUCT_BY_HANDLE_QUERY = "local:product-by-handle";
 
 export async function storefrontApiRequest(query: string, variables: Record<string, unknown> = {}) {
-  const response = await fetch(SHOPIFY_STOREFRONT_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "X-Shopify-Storefront-Access-Token": SHOPIFY_STOREFRONT_TOKEN,
-    },
-    body: JSON.stringify({ query, variables }),
-  });
-
-  if (response.status === 402) {
-    toast.error("Shopify: Payment required", {
-      description: "Shopify API access requires an active billing plan. Visit https://admin.shopify.com to upgrade.",
-    });
-    return;
+  if (query === PRODUCT_BY_HANDLE_QUERY) {
+    const product = CATALOG.find((p) => p.node.handle === variables.handle)?.node ?? null;
+    return { data: { product } };
   }
-
-  if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-  const data = await response.json();
-  if (data.errors) throw new Error(`Shopify: ${data.errors.map((e: { message: string }) => e.message).join(", ")}`);
-  return data;
+  // products(first, query) â€” query uses Shopify tag syntax `tag:<tag>`; fall back to all.
+  const tag = typeof variables.query === "string" ? variables.query.match(/^tag:(.+)$/)?.[1] : null;
+  const edges = tag
+    ? CATALOG.filter((p) => p.node.tags.includes(tag))
+    : CATALOG;
+  return { data: { products: { edges } } };
 }
 
 export const CATEGORIES = [
-  { slug: "atelier", title: "Atelier", tag: "atelier", blurb: "Cashmere, silk, tagless seams — ready-to-wear engineered for the sensitive skin." },
+  { slug: "atelier", title: "Atelier", tag: "atelier", blurb: "Cashmere, silk, tagless seams â€” ready-to-wear engineered for the sensitive skin." },
   { slug: "intimates", title: "Intimates", tag: "intimates", blurb: "Luxury lingerie in sensory-friendly fabrics. Soft-cup, wireless, considered." },
   { slug: "shapewear", title: "Second Skin", tag: "Second Skin", blurb: "Seamless shapewear. Compression as comfort, not constraint." },
-  { slug: "bedding", title: "Sanctuary Bedding", tag: "bedding", blurb: "Weighted blankets, silk sheets, intimate bedding — for deep regulation." },
+  { slug: "bedding", title: "Sanctuary Bedding", tag: "bedding", blurb: "Weighted blankets, silk sheets, intimate bedding â€” for deep regulation." },
   { slug: "adornment", title: "Objects & Adornment", tag: "adornment", blurb: "Fine jewelry, tactile objects, calm-finish electronics." },
 ] as const;
+

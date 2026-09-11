@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { convertToModelMessages, streamText, type UIMessage } from "ai";
-import { createLovableAiGatewayProvider } from "@/lib/ai-gateway.server";
+import { createOpenAICompatible } from "@ai-sdk/openai-compatible";
 
 const SYSTEM_PROMPT = `You are the NDV Concierge — a calm, attentive guide for NDV (Neurodivergence), a luxury house for sensory-sensitive women aged 18–55.
 
@@ -23,12 +23,18 @@ export const Route = createFileRoute("/api/chat")({
         const { messages } = (await request.json()) as { messages?: UIMessage[] };
         if (!Array.isArray(messages)) return new Response("Messages required", { status: 400 });
 
-        const key = process.env.LOVABLE_API_KEY;
-        if (!key) return new Response("Missing LOVABLE_API_KEY", { status: 500 });
+        // STANDALONE: any OpenAI-compatible endpoint (OpenAI, OpenRouter, Groq, ...)
+        // via env vars. No Lovable gateway.
+        const key = process.env.OPENAI_API_KEY;
+        if (!key) return new Response("Missing OPENAI_API_KEY", { status: 500 });
 
-        const gateway = createLovableAiGatewayProvider(key);
+        const provider = createOpenAICompatible({
+          name: process.env.OPENAI_PROVIDER_NAME ?? "openai",
+          baseURL: process.env.OPENAI_BASE_URL ?? "https://api.openai.com/v1",
+          apiKey: key,
+        });
         const result = streamText({
-          model: gateway("google/gemini-3-flash-preview"),
+          model: provider(process.env.OPENAI_MODEL ?? "gpt-4o-mini"),
           system: SYSTEM_PROMPT,
           messages: await convertToModelMessages(messages),
         });
