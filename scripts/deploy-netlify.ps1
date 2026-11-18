@@ -5,7 +5,13 @@
 $ErrorActionPreference = "Stop"
 $root = "C:\dev\ndv"
 $dist = Join-Path $root "dist\client"
-$token = (Get-Content (Join-Path $root ".netlify-token") -Raw).Trim()
+# Token: NETLIFY_AUTH_TOKEN env var, else a local .netlify-token file (gitignored, never commit it).
+$token = $env:NETLIFY_AUTH_TOKEN
+if (-not $token) {
+  $tokenFile = Join-Path $root ".netlify-token"
+  if (-not (Test-Path $tokenFile)) { throw "Set NETLIFY_AUTH_TOKEN or create a local .netlify-token file" }
+  $token = (Get-Content $tokenFile -Raw).Trim()
+}
 $site = "b9893937-8874-4cd6-aa54-fd3d6d89f146"
 $zip = Join-Path $env:TEMP "ndv-deploy.zip"
 
